@@ -14,7 +14,7 @@ import '~styles/app.scss'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import SVGDefs from './components/SVGDefs'
+// import SVGDefs from './components/SVGDefs'
 
 import { layout } from './Layout.module.scss'
 
@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
         <Header siteTitle={data.site.siteMetadata?.title} />
         <main className="main">{children}</main>
         <Footer siteTitle={data.site.siteMetadata?.title} />
-        <SVGDefs />
+        {/* <SVGDefs /> */}
       </div>
     </SSRProvider>
   )

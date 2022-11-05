@@ -5,3 +5,10 @@
   @import '~@fontsource/roboto/scss/mixins';
   @include fontFace($weight: 300, $unicodeMap: $umap);
 */
+
+@import '~@fontsource/tomorrow/scss/mixins';
+
+@include fontFaceCustom($weight: 400);
+@include fontFaceCustom($weight: 500);
+@include fontFaceCustom($weight: 600);
+// @include fontFaceCustom($weight: 700);

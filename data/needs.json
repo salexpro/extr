@@ -1,0 +1,23 @@
+[
+  {
+    "link": "#",
+    "avatar": "./img/tweets/solpress.png",
+    "name": "SolPress Plugins",
+    "handle": "SolPressPlugins",
+    "tweet": "This sound wonderful and exactly what open source, widely distributed projects like ours need. We don't want ecommerce with Solana Pay running on public rpc that gets heavily throttled, and we don't want to added cost to stores owners and more complications w premium rpc."
+  },
+  {
+    "link": "#",
+    "avatar": "./img/tweets/shelby.png",
+    "name": "🅢🅗🅔🅛🅑🅨 is Ok()",
+    "handle": "J_Shelby_J",
+    "tweet": "This is a great post. You are absolutely right about the rpc layer being a centralized vulnerability in web3."
+  },
+  {
+    "link": "#",
+    "avatar": "./img/tweets/snoworly.png",
+    "name": "snoworly ☀️",
+    "handle": "snoworly",
+    "tweet": "Thank you guys, huge service to the community! Have you considered a hostname with a load balancer in front of these? Would also allow clients to connect via https."
+  }
+]

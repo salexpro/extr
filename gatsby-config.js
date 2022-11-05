@@ -13,15 +13,15 @@ module.exports = {
   trailingSlash: 'never',
   polyfill: false,
   siteMetadata: {
-    title: `Minimal Gatsby Starter`,
-    description: `Description`,
+    title: `Extr`,
+    description: `Battle-tested decentralized RPC gateway `,
     domain:
       // Cloudflare
       process.env.CF_PAGES_URL ||
       // Vercel
       process.env.GATSBY_VERCEL_URL ||
       // Default
-      'starter.min.studio',
+      'extr.salex.pro',
   },
   plugins: [
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-webpack-bundle-analyser-v2/
@@ -45,6 +45,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `@gvrs/gatsby-transformer-blurhash`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
