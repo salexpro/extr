@@ -28,9 +28,10 @@
   max-width: 460px;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-duration: 350ms;
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, visibility;
 
   &.closed {
+    visibility: hidden;
     opacity: 0;
     transform: translateY(-10px);
   }

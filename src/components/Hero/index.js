@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import cn from 'classnames'
+import gsap from 'gsap'
 
 import Icon from '../Icon'
 
@@ -11,7 +12,12 @@ import * as s from './Hero.module.scss'
 import PARTNERS from './constants'
 
 const Hero = () => {
-  const [window, setWindow] = useState(true)
+  const [wnd, setWindow] = useState(true)
+
+  const handleBalancer = (e) => {
+    e.preventDefault()
+    gsap.to(window, { scrollTo: '#balancer', ease: 'power2' })
+  }
 
   return (
     <Container id="top" as="section" className={s.hero}>
@@ -21,9 +27,11 @@ const Hero = () => {
           Connect your dApp to a decentralized cluster of RPC nodes and
           automatically reroute responses if any node is down
         </p>
-        <Button href="#">Get Solana RPC endpoint</Button>
+        <Button href="#balancer" onClick={handleBalancer}>
+          Get Solana RPC endpoint
+        </Button>
 
-        <div className={cn(s.window, { [s.closed]: !window })}>
+        <div className={cn(s.window, { [s.closed]: !wnd })}>
           <div className={s.window__bar}>
             <button
               type="button"
@@ -37,8 +45,7 @@ const Hero = () => {
             <img src={everstake} width={52} alt="Everstake logo" />
             <span>
               extrnode is powered by{' '}
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href="#" target="_blank">
+              <a href="https://everstake.one" target="_blank" rel="noreferrer">
                 Everstake
               </a>
             </span>

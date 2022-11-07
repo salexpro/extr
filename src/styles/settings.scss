@@ -433,9 +433,9 @@ $paragraph-margin-bottom: 1.8em;
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: (
   xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
+  sm: 375px,
+  md: 640px,
+  lg: 1024px,
   xl: 1200px,
   xxl: 1400px,
 ) !default;
@@ -1288,7 +1288,7 @@ $card-group-margin: $grid-gutter-width * 0.5 !default;
 $accordion-padding-y: 20px;
 $accordion-padding-x: 40px;
 $accordion-color: $black; // Sass variable because of $accordion-button-icon
-$accordion-bg: $white;
+$accordion-bg: null;
 $accordion-border-width: 0;
 $accordion-border-color: $body-bg;
 $accordion-border-radius: $border-radius !default;

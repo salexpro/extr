@@ -1,17 +1,17 @@
 const SOCIAL = {
   mirror: {
     label: 'Mirror',
-    link: '#',
+    link: 'https://mirror.xyz/extrnode.eth',
   },
   twitter: {
     label: 'Twitter',
     variant: 'outline-dark',
-    link: '#',
+    link: 'https://twitter.com/extrnode',
   },
   discord: {
     label: 'Discord',
     variant: 'dark',
-    link: '#',
+    link: 'https://discord.gg/TN3WZrSJCr',
   },
 }
 

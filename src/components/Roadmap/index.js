@@ -5,9 +5,10 @@ import cn from 'classnames'
 import Icon from '../Icon'
 import Window from '../Window'
 
-import ROADMAP from './constants'
-
 import * as s from './Roadmap.module.scss'
+
+import ROADMAP from './constants'
+import SOCIAL from '../Social/constants'
 
 const Roadmap = () => {
   return (
@@ -30,7 +31,11 @@ const Roadmap = () => {
           </p>
 
           <div className={s.buttons}>
-            <Button href="#" target="_blank" variant="outline-primary">
+            <Button
+              href={SOCIAL.mirror.link}
+              target="_blank"
+              variant="outline-primary"
+            >
               Read more on Mirror
             </Button>
           </div>
@@ -43,7 +48,6 @@ const Roadmap = () => {
               key={`w${i}`}
               title={status || <Icon name="icon-clock" size={20} />}
               variant={cn('step', { step__completed: status })}
-              // style={{ background: status && 'none', color:  }}
             >
               {content}
             </Window>

@@ -1,20 +1,20 @@
 [
   {
-    "link": "#",
+    "link": "https://twitter.com/chainflowpos/status/1583140767996211200",
     "avatar": "./img/tweets/chainflow.png",
     "name": "Chainflow",
     "handle": "ChainflowPOS",
     "tweet": "Momentum is building to <span>#KeepStakeDecentralized</span> on PoS chains. But, it’s critical that we decentralize the infra behind those chains, too.\nWe’re excited to work with our friends <span>@everstake_pool</span> on their new initiative to decentralize one of the most important parts of the stack:"
   },
   {
-    "link": "#",
+    "link": "https://twitter.com/brianlong/status/1582101136877957121",
     "avatar": "./img/tweets/brian.png",
     "name": "Brian Long | Block Logic | Triton One ☀️",
     "handle": "J_Shelby_J",
     "tweet": "My friends at <span>@everstake_pool</span> are working on some ideas to verify the results from RPC services. Please check it out and share your thoughts. <span>#Solana</span> <span>#RPC</span>"
   },
   {
-    "link": "#",
+    "link": "https://twitter.com/stakingfac/status/1582701143112953859",
     "avatar": "./img/tweets/staing_facilities.png",
     "name": "Staking Facilities",
     "handle": "StakingFac",
@@ -22,10 +22,10 @@
   },
 
   {
-    "link": "#",
-    "avatar": "./img/tweets/brian.png",
-    "name": "Brian Long | Block Logic | Triton One ☀️",
-    "handle": "J_Shelby_J2",
-    "tweet": "My friends at <span>@everstake_pool</span> are working on some ideas to verify the results from RPC services. Please check it out and share your thoughts. <span>#Solana</span> <span>#RPC</span>"
+    "link": "https://twitter.com/ChainodeTech/status/1582127076433240065",
+    "avatar": "./img/tweets/chainnode.jpg",
+    "name": "Chainode Tech | Breakpoint Lisbon",
+    "handle": "ChainodeTech",
+    "tweet": "🛠️ In the era of <span>#decentralization</span> & <span>#Web3</span>, establishing a reliable & secure infrastructure is not only ambitious but also an essential endeavor.<br>⚡️ Our friends <span>@everstake_pool</span> wrote an interesting piece focused on <span>#RPC</span> layers.<br>Find our more below & join us in the journey! 💪"
   }
 ]

@@ -8,7 +8,6 @@
   &__inner {
     display: grid;
     grid-template-columns: 2fr auto 2fr;
-    // grid-auto-flow: column;
     column-gap: 40px;
     align-items: center;
     justify-content: space-between;
