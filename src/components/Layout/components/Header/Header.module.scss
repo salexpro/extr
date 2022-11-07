@@ -1,15 +1,89 @@
+/* stylelint-disable no-descending-specificity */
 @import '~styles/mixins';
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+
+  &.scroll {
+    .logo {
+      transition-delay: 100ms;
+      transform: scale(0.6) translateY(35px);
+    }
+
+    .bg {
+      &::after {
+        transform: scaleX(200%);
+      }
+    }
+
+    .circle {
+      opacity: 0;
+      transform: translateX(-5px);
+    }
+  }
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  // grid-template-columns: auto 1fr auto;
+  grid-auto-flow: column;
+  column-gap: 32px;
+  align-items: center;
+  // justify-content: space-between;
+  justify-content: center;
+  min-height: 70px;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: rotate(90deg) translate(65px, -100%);
+  transform-origin: top left;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: calc(100% - 130px * 2);
+  height: 100%;
+  padding: 0 30px;
+  margin: 0 130px;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: '';
+    background-color: $black;
+    transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+.circles {
   display: grid;
   grid-auto-flow: column;
-  align-items: center;
-  justify-content: space-between;
+  column-gap: 13px;
+}
 
-  &__logo {
-    justify-self: start;
-  }
-  @include b-d(sm) {
-    // Code...
+.circle {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: 250ms;
+  transition-property: transform, opacity;
+  @for $i from 0 through 3 {
+    &:nth-child(#{$i + 1}) {
+      transition-delay: 70ms * $i;
+    }
   }
 }

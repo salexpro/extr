@@ -45,6 +45,9 @@
 // @import '~bootstrap/scss/utilities';
 // @import '~bootstrap/scss/utilities/api';
 
+@import '~swiper/css';
+@import '~swiper/css/free-mode';
+
 // Components
 @import 'components/base';
 @import 'components/container'; // our custom container

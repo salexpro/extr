@@ -1,21 +1,27 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import cn from 'classnames'
 
 import Icon from '../Icon'
 
 import * as s from './Tweet.module.scss'
 
-const Tweet = ({ avatar, link, name, handle, tweet }) => {
+const Tweet = ({ avatar, link, name, handle, tweet, variant }) => {
   return (
-    <a href={link} target="_blank" className={s.tweet} rel="noreferrer">
+    <a
+      href={link}
+      target="_blank"
+      className={cn(s.tweet, { [s[variant]]: variant })}
+      rel="noreferrer"
+    >
       <div className={s.bar}>
-        <Icon name="icon-twitter" size={40} />
+        <Icon name="icon-twitter" size={30} />
         <span>
           Twitter
-          <Icon name="icon-arrow-up" size={28} />
+          <Icon name="icon-arrow-up" size={22} />
         </span>
       </div>
-      <div className={s.top}>
+      <div className={s.content}>
         <GatsbyImage
           key={handle}
           image={{

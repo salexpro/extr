@@ -7,14 +7,14 @@ import DATA from './constants'
 
 import * as s from './Social.module.scss'
 
-const Social = ({ variant }) => {
+const Social = ({ variant, scroll }) => {
   return (
-    <ul className={cn(s.social, { [s[variant]]: variant })}>
-      {DATA.map(({ name, link }) => (
-        <li key={name}>
-          <a href={link} aria-label={name} target="_blank" rel="noreferrer">
-            {name}
-            <Icon name="icon-arrow-up" size={28} />
+    <ul className={cn(s.social, { [s[variant]]: variant, [s.scroll]: scroll })}>
+      {Object.values(DATA).map(({ label, link }) => (
+        <li key={label}>
+          <a href={link} aria-label={label} target="_blank" rel="noreferrer">
+            {label}
+            <Icon name="icon-arrow-up" size={18} />
           </a>
         </li>
       ))}

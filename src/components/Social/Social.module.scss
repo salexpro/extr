@@ -1,5 +1,48 @@
+/* stylelint-disable no-descending-specificity */
 @import '~styles/mixins';
 
 .social {
   display: grid;
+  grid-gap: 30px 40px;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  list-style: none;
+
+  &.header {
+    position: absolute;
+    top: 56px;
+    right: 10px;
+    column-gap: 36px;
+    justify-self: end;
+    transition: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &.footer {
+    grid-auto-flow: column;
+  }
+
+  &.scroll {
+    row-gap: 106px;
+    transition-delay: 50ms;
+    transform: translate(-155px, -155px) rotate(-90deg);
+
+    li {
+      transition-delay: 50ms;
+      transform: rotate(90deg);
+    }
+  }
+
+  li {
+    transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  a {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 15px;
+    align-items: center;
+    text-decoration: none;
+  }
 }

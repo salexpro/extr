@@ -1,22 +1,55 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import gsap from 'gsap'
+import cn from 'classnames'
 
+import useScroll from '~hooks/useScroll'
+
+import Icon from '~components/Icon'
 import Social from '~components/Social'
 import logo from '~img/logo.svg'
 import Menu from '../Menu'
 
 import * as s from './Header.module.scss'
 
-const Header = ({ siteTitle }) => (
-  <Container as="header" className={s.header}>
-    <div className={s.header__logo}>
-      <img src={logo} width={140} alt={siteTitle} />
-    </div>
-    <Menu />
-    <Social variant="header" />
-  </Container>
-)
+const Header = ({ siteTitle }) => {
+  const { scrollY } = useScroll()
+
+  const isScrolled = scrollY > 10
+
+  const handleTop = (e) => {
+    e.preventDefault()
+    gsap.to(window, { scrollTo: '#top', ease: 'power2' })
+  }
+
+  return (
+    <header className={cn(s.header, { [s.scroll]: isScrolled })}>
+      <Container className={s.inner}>
+        <a href="#top" onClick={handleTop} className={s.logo}>
+          <img src={logo} width={140} alt={siteTitle} />
+        </a>
+        <Menu scroll={isScrolled} />
+        <Social variant="header" scroll={isScrolled} />
+        <div className={s.bg}>
+          <div className={s.circles}>
+            {[...Array(3)].map((_, i) => (
+              <Icon
+                // eslint-disable-next-line react/no-array-index-key
+                key={`i${i}`}
+                className={s.circle}
+                name="icon-circle"
+                size={16}
+              />
+            ))}
+          </div>
+        </div>
+      </Container>
+
+      {/* <button onClick={kkk}>dsfsdfs</button> */}
+    </header>
+  )
+}
 
 Header.defaultProps = {
   siteTitle: '',

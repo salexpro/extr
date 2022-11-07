@@ -1,0 +1,15 @@
+.vision {
+  padding-top: 80px;
+  padding-bottom: 70px;
+}
+
+.windows {
+  display: grid;
+  margin-top: 85px;
+}
+
+.window {
+  &__content {
+    max-width: 455px;
+  }
+}

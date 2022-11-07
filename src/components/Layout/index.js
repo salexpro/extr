@@ -9,6 +9,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { SSRProvider } from 'react-bootstrap'
+import gsap from 'gsap'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
 import '~styles/app.scss'
 
@@ -17,6 +19,8 @@ import Footer from './components/Footer'
 // import SVGDefs from './components/SVGDefs'
 
 import { layout } from './Layout.module.scss'
+
+gsap.registerPlugin(ScrollToPlugin)
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

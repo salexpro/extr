@@ -1,6 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Container } from 'react-bootstrap'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode, Navigation } from 'swiper'
 
 import Icon from '../Icon'
 import Tweet from '../Tweet'
@@ -36,26 +38,41 @@ const Partners = () => {
   `)
 
   return (
-    <Container as="section" className={s.partners}>
-      <div className={s.top}>
-        <h2>
-          What our <span>partners</span> say
-        </h2>
-        <div className={s.controls}>
-          <button type="button">
-            <Icon name="icon-arrow-right" size={42} />
-          </button>
-          <button type="button">
-            <Icon name="icon-arrow-right" size={42} />
-          </button>
+    <section id="partners" className={s.partners}>
+      <Container>
+        <div className={s.top}>
+          <h2>
+            What our <span>partners</span> say
+          </h2>
+          <div className={s.controls}>
+            <button type="button" className={s.control__prev}>
+              <Icon name="icon-arrow-right" size={42} />
+            </button>
+            <button type="button" className={s.control__next}>
+              <Icon name="icon-arrow-right" size={42} />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={s.carousel}>
+      </Container>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={20}
+        freeMode
+        navigation={{
+          prevEl: `.${s.control__prev}`,
+          nextEl: `.${s.control__next}`,
+        }}
+        modules={[FreeMode, Navigation]}
+        className={s.carousel}
+        grabCursor
+      >
         {allCarouselJson.nodes.map((tweet) => (
-          <Tweet key={tweet.handle} {...tweet} />
+          <SwiperSlide key={tweet.handle}>
+            <Tweet variant="partner" {...tweet} />
+          </SwiperSlide>
         ))}
-      </div>
-    </Container>
+      </Swiper>
+    </section>
   )
 }
 

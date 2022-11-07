@@ -1,3 +1,25 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
 .roadmap {
-  //
+  padding-top: 80px;
+  padding-bottom: 70px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: minmax(100px, 430px) 1fr;
+  column-gap: 130px;
+  margin-top: 75px;
+}
+
+.content {
+  margin-top: -10px;
+  font-size: 20px;
+
+  :global(.btn) {
+    margin-top: 80px;
+  }
+}
+
+.steps {
+  counter-reset: steps;
 }

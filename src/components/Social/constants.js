@@ -1,16 +1,18 @@
-const SOCIAL = [
-  {
-    name: 'Mirror',
+const SOCIAL = {
+  mirror: {
+    label: 'Mirror',
     link: '#',
   },
-  {
-    name: 'Twitter',
+  twitter: {
+    label: 'Twitter',
+    variant: 'outline-dark',
     link: '#',
   },
-  {
-    name: 'Discord',
+  discord: {
+    label: 'Discord',
+    variant: 'dark',
     link: '#',
   },
-]
+}
 
 export default SOCIAL

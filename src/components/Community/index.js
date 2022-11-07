@@ -8,19 +8,30 @@ import * as s from './Community.module.scss'
 import SOCIAL from '../Social/constants'
 
 const Community = () => {
-  const BUTTONS = ['dark', 'outline-dark']
-
   return (
     <section className={s.community}>
       <Container>
         <Window title="Community" variant="fluid">
-          <h2>Join our community to build a decentralized RPC layer of Web3</h2>
-          <div className={s.buttons}>
-            {BUTTONS.map((variant, i) => (
-              <Button key={variant} href={SOCIAL[i + 1].link} variant={variant}>
-                {SOCIAL[i + 1].name}
-              </Button>
-            )).reverse()}
+          <div className={s.window}>
+            <h2 className={s.window__title}>
+              Join our community to
+              <br /> build a decentralized RPC <br /> layer of Web3
+            </h2>
+            <div className={s.window__buttons}>
+              {Object.values(SOCIAL)
+                .slice(1)
+                .reverse()
+                .map(({ link, variant, label }) => (
+                  <Button
+                    key={variant}
+                    href={link}
+                    target="_blank"
+                    variant={variant}
+                  >
+                    {label}
+                  </Button>
+                ))}
+            </div>
           </div>
         </Window>
       </Container>

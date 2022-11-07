@@ -9,23 +9,33 @@ import * as s from './Contact.module.scss'
 import SOCIAL from '../Social/constants'
 
 const Contact = () => {
-  const BUTTONS = ['dark', 'outline-dark']
-
   return (
-    <section className={s.contact}>
-      <Container>
-        <Window title="Community">
-          <h2>Join our community to build a decentralized RPC layer of Web3</h2>
-          <div className={s.buttons}>
-            {BUTTONS.map((variant, i) => (
-              <Button key={variant} href={SOCIAL[i + 1].link} variant={variant}>
-                {SOCIAL[i + 1].name}
-              </Button>
-            )).reverse()}
+    <section id="contact" className={s.contact}>
+      <Container className={s.contact__inner}>
+        <Window title="Community" width={846}>
+          <div className={s.window__content}>
+            <h2>
+              Join our community to build a decentralized RPC layer of Web3
+            </h2>
+            <div className={s.window__buttons}>
+              {Object.values(SOCIAL)
+                .slice(1)
+                .reverse()
+                .map(({ link, variant, label }) => (
+                  <Button
+                    key={variant}
+                    href={link}
+                    target="_blank"
+                    variant={variant}
+                  >
+                    {label}
+                  </Button>
+                ))}
+            </div>
           </div>
         </Window>
-        <Window title="Contact us" variant="dark" width={600}>
-          <div className={s.contact}>
+        <Window title="Contact us" variant="envelope" width={600}>
+          <div className={s.window__envelope}>
             <Icon name="ill-envelope" size={80} />
             <div>
               Contacts us via email: <br />

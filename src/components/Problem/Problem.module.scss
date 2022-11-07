@@ -1,0 +1,10 @@
+.problem {
+  padding-top: 150px;
+  padding-bottom: 70px;
+}
+
+.tweets {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  margin-top: 60px;
+}

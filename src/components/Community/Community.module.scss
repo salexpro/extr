@@ -1,3 +1,26 @@
+@import '~styles/mixins';
+
 .community {
-  //
+  padding: 150px 0;
+  background-color: $primary;
+}
+
+.window {
+  display: grid;
+  grid-template-columns: minmax(100px, 550px) auto;
+  column-gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  justify-self: start;
+  width: 100%;
+
+  &__title {
+    line-height: 1.4;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 30px;
+  }
 }

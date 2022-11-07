@@ -1,4 +1,4 @@
-const PIPELINE = [
+const ROADMAP = [
   {
     status: 'Completed',
     content: 'Public solana RPC endpoints',
@@ -11,11 +11,11 @@ const PIPELINE = [
     content: 'Solana RPC explorer and map',
   },
   {
-    content: 'Solana RPC explorer and map',
+    content: 'Public load balancer on Solana',
   },
   {
     content: 'Extrnode for enterprises',
   },
 ]
 
-export default PIPELINE
+export default ROADMAP

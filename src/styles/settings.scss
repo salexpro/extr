@@ -316,8 +316,8 @@ $theme-colors: (
   // 'info': $info,
   // 'warning': $warning,
   // 'danger': $danger,
-  'light': $light,
-  'dark': $dark,
+  'light': $white,
+  'dark': $black,
 );
 // scss-docs-end theme-colors-map
 
@@ -335,7 +335,7 @@ $escaped-characters: (
 // Quickly modify global styling by enabling or disabling optional features.
 
 $enable-caret: true !default;
-$enable-rounded: true !default;
+$enable-rounded: false;
 $enable-shadows: false !default;
 $enable-gradients: false !default;
 $enable-transitions: true !default;
@@ -413,7 +413,7 @@ $body-text-align: null !default;
 $link-color: $primary !default;
 $link-decoration: underline !default;
 $link-shade-percentage: 20% !default;
-$link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-color: $white;
 $link-hover-decoration: null !default;
 
 $stretched-link-pseudo-element: after !default;
@@ -423,7 +423,7 @@ $stretched-link-z-index: 1 !default;
 //
 // Style p element.
 
-$paragraph-margin-bottom: 1rem !default;
+$paragraph-margin-bottom: 1.8em;
 
 // Grid breakpoints
 //
@@ -565,13 +565,13 @@ $font-weight-bolder: bolder !default;
 
 $font-weight-base: $font-weight-normal !default;
 
-$line-height-base: 1.5 !default;
+$line-height-base: 1.8;
 $line-height-sm: 1.25 !default;
 $line-height-lg: 2 !default;
 
-$h1-font-size: $font-size-base * 2.5 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
+$h1-font-size: 60px;
+$h2-font-size: 42px;
+$h3-font-size: 20px;
 $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
@@ -589,11 +589,11 @@ $font-sizes: (
 // scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
-$headings-margin-bottom: $spacer * 0.5 !default;
+$headings-margin-bottom: 0;
 $headings-font-family: null !default;
 $headings-font-style: null !default;
 $headings-font-weight: 500 !default;
-$headings-line-height: 1.2 !default;
+$headings-line-height: 1.5;
 $headings-color: null !default;
 // scss-docs-end headings-variables
 
@@ -614,8 +614,8 @@ $display-line-height: $headings-line-height !default;
 // scss-docs-end display-headings
 
 // scss-docs-start type-variables
-$lead-font-size: $font-size-base * 1.25 !default;
-$lead-font-weight: 300 !default;
+$lead-font-size: 22px;
+$lead-font-weight: 500;
 
 $small-font-size: 0.875em !default;
 
@@ -720,7 +720,7 @@ $input-btn-padding-y: 0.375rem !default;
 $input-btn-padding-x: 0.75rem !default;
 $input-btn-font-family: null !default;
 $input-btn-font-size: $font-size-base !default;
-$input-btn-line-height: $line-height-base !default;
+$input-btn-line-height: 1.4;
 
 $input-btn-focus-width: 0.25rem !default;
 $input-btn-focus-color-opacity: 0.25 !default;
@@ -748,10 +748,10 @@ $input-btn-border-width: $border-width !default;
 // For each of Bootstrap's buttons, define text, background, and border color.
 
 // scss-docs-start btn-variables
-$btn-padding-y: $input-btn-padding-y !default;
-$btn-padding-x: $input-btn-padding-x !default;
+$btn-padding-y: 24px;
+$btn-padding-x: 36px;
 $btn-font-family: $input-btn-font-family !default;
-$btn-font-size: $input-btn-font-size !default;
+$btn-font-size: 18px;
 $btn-line-height: $input-btn-line-height !default;
 $btn-white-space: null !default; // Set to `nowrap` to prevent text wrapping
 
@@ -763,9 +763,9 @@ $btn-padding-y-lg: $input-btn-padding-y-lg !default;
 $btn-padding-x-lg: $input-btn-padding-x-lg !default;
 $btn-font-size-lg: $input-btn-font-size-lg !default;
 
-$btn-border-width: $input-btn-border-width !default;
+$btn-border-width: var(--pixel);
 
-$btn-font-weight: $font-weight-normal !default;
+$btn-font-weight: $font-weight-bold;
 $btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
 $btn-focus-width: $input-btn-focus-width !default;
 $btn-focus-box-shadow: $input-btn-focus-box-shadow !default;
@@ -1083,11 +1083,11 @@ $zindex-toast: 1090 !default;
 
 // scss-docs-start nav-variables
 $nav-link-padding-y: 0.5rem !default;
-$nav-link-padding-x: 1rem !default;
+$nav-link-padding-x: 18px;
 $nav-link-font-size: null !default;
-$nav-link-font-weight: null !default;
-$nav-link-color: var(--#{$prefix}link-color) !default;
-$nav-link-hover-color: var(--#{$prefix}link-hover-color) !default;
+$nav-link-font-weight: 500;
+$nav-link-color: $white;
+$nav-link-hover-color: shift-color($white, $link-shade-percentage);
 $nav-link-transition: color 0.15s ease-in-out,
   background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !default;
 $nav-link-disabled-color: $gray-600 !default;
@@ -1285,40 +1285,40 @@ $card-group-margin: $grid-gutter-width * 0.5 !default;
 // Accordion
 
 // scss-docs-start accordion-variables
-$accordion-padding-y: 1rem !default;
-$accordion-padding-x: 1.25rem !default;
-$accordion-color: $body-color !default; // Sass variable because of $accordion-button-icon
-$accordion-bg: $body-bg !default;
-$accordion-border-width: $border-width !default;
-$accordion-border-color: var(--#{$prefix}border-color) !default;
+$accordion-padding-y: 20px;
+$accordion-padding-x: 40px;
+$accordion-color: $black; // Sass variable because of $accordion-button-icon
+$accordion-bg: $white;
+$accordion-border-width: 0;
+$accordion-border-color: $body-bg;
 $accordion-border-radius: $border-radius !default;
 $accordion-inner-border-radius: subtract(
   $accordion-border-radius,
   $accordion-border-width
 ) !default;
 
-$accordion-body-padding-y: $accordion-padding-y !default;
-$accordion-body-padding-x: $accordion-padding-x !default;
+$accordion-body-padding-y: 40px;
+$accordion-body-padding-x: $accordion-padding-x;
 
 $accordion-button-padding-y: $accordion-padding-y !default;
 $accordion-button-padding-x: $accordion-padding-x !default;
-$accordion-button-color: $accordion-color !default;
-$accordion-button-bg: var(--#{$prefix}accordion-bg) !default;
+$accordion-button-color: $white;
+$accordion-button-bg: $black;
 $accordion-transition: $btn-transition, border-radius 0.15s ease !default;
-$accordion-button-active-bg: tint-color($component-active-bg, 90%) !default;
+$accordion-button-active-bg: $black;
 $accordion-button-active-color: shade-color($primary, 10%) !default;
 
 $accordion-button-focus-border-color: $input-focus-border-color !default;
-$accordion-button-focus-box-shadow: $btn-focus-box-shadow !default;
+$accordion-button-focus-box-shadow: none;
 
-$accordion-icon-width: 1.25rem !default;
+$accordion-icon-width: 30px;
 $accordion-icon-color: $accordion-button-color !default;
 $accordion-icon-active-color: $accordion-button-active-color !default;
 $accordion-icon-transition: transform 0.2s ease-in-out !default;
 $accordion-icon-transform: rotate(-180deg) !default;
 
-$accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
-$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28.5 7.5L25.5 7.5L25.5 10.5L28.5 10.5L28.5 7.5ZM25.5 10.5L22.5 10.5L22.5 13.5L25.5 13.5L25.5 10.5ZM22.5 13.5L19.5 13.5L19.5 16.5L22.5 16.5L22.5 13.5ZM19.5 16.5L16.5 16.5L16.5 19.5L19.5 19.5L19.5 16.5ZM16.5 19.5L13.5 19.5L13.5 22.5L16.5 22.5L16.5 19.5ZM13.5 16.5L10.5 16.5L10.5 19.5L13.5 19.5L13.5 16.5ZM10.5 13.5L7.5 13.5L7.5 16.5L10.5 16.5L10.5 13.5ZM7.5 10.5L4.5 10.5L4.5 13.5L7.5 13.5L7.5 10.5ZM4.5 7.5L1.5 7.5L1.5 10.5L4.5 10.5L4.5 7.5Z' fill='%23B8FF5E'/%3E%3C/svg%3E%0A");
+$accordion-button-active-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28.5 7.5L25.5 7.5L25.5 10.5L28.5 10.5L28.5 7.5ZM25.5 10.5L22.5 10.5L22.5 13.5L25.5 13.5L25.5 10.5ZM22.5 13.5L19.5 13.5L19.5 16.5L22.5 16.5L22.5 13.5ZM19.5 16.5L16.5 16.5L16.5 19.5L19.5 19.5L19.5 16.5ZM16.5 19.5L13.5 19.5L13.5 22.5L16.5 22.5L16.5 19.5ZM13.5 16.5L10.5 16.5L10.5 19.5L13.5 19.5L13.5 16.5ZM10.5 13.5L7.5 13.5L7.5 16.5L10.5 16.5L10.5 13.5ZM7.5 10.5L4.5 10.5L4.5 13.5L7.5 13.5L7.5 10.5ZM4.5 7.5L1.5 7.5L1.5 10.5L4.5 10.5L4.5 7.5Z' fill='%23B8FF5E'/%3E%3C/svg%3E%0A");
 // scss-docs-end accordion-variables
 
 // Tooltips

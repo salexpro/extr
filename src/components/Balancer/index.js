@@ -9,9 +9,9 @@ import DATA from './constants'
 
 const Balancer = () => {
   return (
-    <Container as="section" className={s.balancer}>
+    <Container id="balancer" as="section" className={s.balancer}>
       <h2>
-        Connect to a cluster of Solana public RPC nodes via our{' '}
+        Connect to a cluster of Solana public <br /> RPC nodes via our{' '}
         <span>open-source</span> balancer
       </h2>
       <div className={s.steps}>
@@ -24,15 +24,16 @@ const Balancer = () => {
       </div>
       <div className={s.footer}>
         <div className={s.footer__buttons}>
-          <Button href="#" variant="outline-primary">
+          <Button href="#" target="_blank" variant="outline-primary">
             Docker Hub
           </Button>
-          <Button href="#" variant="outline-light">
+          <Button href="#" target="_blank" variant="outline-light">
             GitHub
           </Button>
         </div>
         <div className={s.footer__warn}>
-          We don&apos;t recommend using a balancer for production applications.
+          We don&apos;t recommend using a balancer for production applications.{' '}
+          <br />
           Use it at your own risk and discretion. Our free public balancer &
           solution for enterprises are underway.
         </div>

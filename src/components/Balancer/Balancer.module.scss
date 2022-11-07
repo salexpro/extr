@@ -1,3 +1,47 @@
+@import '~styles/mixins';
+
 .balancer {
-  //
+  padding-top: 80px;
+  padding-bottom: 150px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 80px;
+  margin-bottom: 80px;
+  counter-reset: steps;
+}
+
+.step {
+  display: grid;
+  row-gap: 40px;
+  max-width: 300px;
+  counter-increment: steps;
+
+  &::before {
+    display: block;
+    font-size: $h2-font-size;
+    font-weight: $headings-font-weight;
+    line-height: 1;
+    color: $primary;
+    content: counter(steps, decimal-leading-zero);
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 46px;
+  align-items: center;
+
+  &__buttons {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 30px;
+  }
+
+  &__warn {
+    color: #929292;
+  }
 }

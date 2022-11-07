@@ -11,13 +11,20 @@ import * as s from './Footer.module.scss'
 const Footer = ({ siteTitle }) => {
   return (
     <Container as="footer" className={s.footer}>
-      <div className={s.footer__logo}>
-        <img src={logo} width={89} alt={siteTitle} />
+      <div className={s.footer__inner}>
+        <div className={s.footer__logo}>
+          <img src={logo} width={89} alt={siteTitle} />
+        </div>
+        <a
+          className={s.footer__mail}
+          href="mailto:hey@etrnode.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          hey@etrnode.com
+        </a>
+        <Social variant="footer" />
       </div>
-      <a href="mailto:hey@etrnode.com" target="_blank" rel="noreferrer">
-        hey@etrnode.com
-      </a>
-      <Social />
     </Container>
   )
 }

@@ -16,8 +16,16 @@
   {
     "link": "#",
     "avatar": "./img/tweets/staing_facilities.png",
-    "name": "",
-    "handle": "",
-    "tweet": ""
+    "name": "Staking Facilities",
+    "handle": "StakingFac",
+    "tweet": "Big shout out to <span>@everstake_pool</span> for tackling the task of decentralizing up the <span>#web3</span> stack While the base layer infrastructure, ie. the nodes powering the <span>#consensus</span> layer, for most <span>#blockchains</span> is already sufficiently decentralized, the rest of the stack, e.g. RPC nodes, isn't"
+  },
+
+  {
+    "link": "#",
+    "avatar": "./img/tweets/brian.png",
+    "name": "Brian Long | Block Logic | Triton One ☀️",
+    "handle": "J_Shelby_J2",
+    "tweet": "My friends at <span>@everstake_pool</span> are working on some ideas to verify the results from RPC services. Please check it out and share your thoughts. <span>#Solana</span> <span>#RPC</span>"
   }
 ]

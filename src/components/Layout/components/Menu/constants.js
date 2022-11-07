@@ -25,7 +25,7 @@ const MENU = [
   },
   {
     name: 'FAQ',
-    link: '#item-2',
+    link: '#faq',
   },
 ]
 

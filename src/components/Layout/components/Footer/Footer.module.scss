@@ -1,13 +1,69 @@
-.footer {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
+@import '~styles/mixins';
 
-  &__logo {
-    justify-self: start;
+.footer {
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, auto);
+    grid-auto-flow: column;
+    column-gap: 130px;
+    align-items: center;
+    padding: 80px 0;
+    margin: 0 90px;
   }
 
-  &__copy {
-    justify-self: end;
+  &__logo {
+    // justify-self: start;
+  }
+
+  &__mail {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    font-weight: 500;
+    color: $white;
+    text-decoration: none;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      // z-index: -1;
+      width: 210%;
+      height: 100%;
+      content: '';
+      background: linear-gradient(
+        90deg,
+        $white 0,
+        $white 50%,
+        $primary 51%,
+        $primary 100%
+      );
+      // background: red;
+      mix-blend-mode: darken;
+      transition: transform 300ms;
+      transition-delay: 0s;
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      border-bottom: 2px solid $primary;
+      transition: transform 300ms;
+      transition-delay: 250ms;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        transition-delay: 250ms;
+        transform: translateX(-51%);
+      }
+
+      &::after {
+        transition-delay: 0s;
+        transform: translateX(-101%);
+      }
+    }
   }
 }

@@ -6,3 +6,74 @@ button {
   outline: none;
   appearance: none;
 }
+
+.btn {
+  --pixel: 8px;
+
+  clip-path: polygon(
+    0 calc(var(--pixel) * 2),
+    var(--pixel) calc(var(--pixel) * 2),
+    var(--pixel) var(--pixel),
+    calc(var(--pixel) * 2) var(--pixel),
+    calc(var(--pixel) * 2) 0,
+    calc(100% - calc(var(--pixel) * 2)) 0,
+    calc(100% - calc(var(--pixel) * 2)) var(--pixel),
+    calc(100% - var(--pixel)) var(--pixel),
+    calc(100% - var(--pixel)) calc(var(--pixel) * 2),
+    100% calc(var(--pixel) * 2),
+    100% calc(100% - calc(var(--pixel) * 2)),
+    calc(100% - var(--pixel)) calc(100% - calc(var(--pixel) * 2)),
+    calc(100% - var(--pixel)) calc(100% - var(--pixel)),
+    calc(100% - calc(var(--pixel) * 2)) calc(100% - var(--pixel)),
+    calc(100% - calc(var(--pixel) * 2)) 100%,
+    calc(var(--pixel) * 2) 100%,
+    calc(var(--pixel) * 2) calc(100% - var(--pixel)),
+    var(--pixel) calc(100% - var(--pixel)),
+    var(--pixel) calc(100% - calc(var(--pixel) * 2)),
+    0 calc(100% - calc(var(--pixel) * 2))
+  );
+
+  &-primary {
+    --bs-btn-hover-color: #{$primary};
+    --bs-btn-active-color: #{$primary};
+    --bs-btn-hover-bg: #{$black};
+    --bs-btn-active-bg: #{$black};
+    --bs-btn-hover-border-color: #{$black};
+    --bs-btn-active-border-color: #{$black};
+
+    // &:focus {
+    //   color: $primary;
+    //   background: $black;
+    //   border-color: $black;
+    // }
+  }
+
+  &-dark {
+    --bs-btn-hover-color: #{$black};
+    --bs-btn-active-color: #{$black};
+    --bs-btn-hover-bg: #{$primary};
+    --bs-btn-active-bg: #{$primary};
+    --bs-btn-hover-border-color: #{$primary};
+    --bs-btn-active-border-color: #{$primary};
+  }
+
+  &[class*='btn-outline'] {
+    border-image-slice: 4;
+    border-image-width: 2;
+    // border-image-outset: 0;
+  }
+
+  &-outline {
+    &-primary {
+      border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><path d='M2 2h2v2H2zM4 0h2v2H4zM10 4h2v2h-2zM0 4h2v2H0zM6 0h2v2H6zM8 2h2v2H8zM8 8h2v2H8zM6 10h2v2H6zM0 6h2v2H0zM10 6h2v2h-2zM4 10h2v2H4zM2 8h2v2H2z' fill='%23b8ff5e'/></svg>");
+    }
+
+    &-light {
+      border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><path d='M2 2h2v2H2zM4 0h2v2H4zM10 4h2v2h-2zM0 4h2v2H0zM6 0h2v2H6zM8 2h2v2H8zM8 8h2v2H8zM6 10h2v2H6zM0 6h2v2H0zM10 6h2v2h-2zM4 10h2v2H4zM2 8h2v2H2z' fill='%23fff'/></svg>");
+    }
+
+    &-dark {
+      border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><path d='M2 2h2v2H2zM4 0h2v2H4zM10 4h2v2h-2zM0 4h2v2H0zM6 0h2v2H6zM8 2h2v2H8zM8 8h2v2H8zM6 10h2v2H6zM0 6h2v2H0zM10 6h2v2h-2zM4 10h2v2H4zM2 8h2v2H2z' fill='%23000'/></svg>");
+    }
+  }
+}
