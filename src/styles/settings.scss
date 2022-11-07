@@ -1087,7 +1087,7 @@ $nav-link-padding-x: 18px;
 $nav-link-font-size: null !default;
 $nav-link-font-weight: 500;
 $nav-link-color: $white;
-$nav-link-hover-color: shift-color($white, $link-shade-percentage);
+$nav-link-hover-color: $primary;
 $nav-link-transition: color 0.15s ease-in-out,
   background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !default;
 $nav-link-disabled-color: $gray-600 !default;

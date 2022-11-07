@@ -16,7 +16,7 @@ import * as s from './Header.module.scss'
 const Header = ({ siteTitle }) => {
   const { scrollY } = useScroll()
 
-  const isScrolled = scrollY > 10
+  const isScrolled = scrollY > 160
 
   const handleTop = (e) => {
     e.preventDefault()

@@ -21,6 +21,7 @@
 
   &.footer {
     grid-auto-flow: column;
+    justify-self: end;
   }
 
   &.scroll {

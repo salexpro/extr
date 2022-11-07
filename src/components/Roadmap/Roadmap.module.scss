@@ -1,7 +1,6 @@
 /* stylelint-disable selector-pseudo-class-no-unknown */
 .roadmap {
-  padding-top: 80px;
-  padding-bottom: 70px;
+  padding-top: 150px;
 }
 
 .container {
@@ -14,10 +13,10 @@
 .content {
   margin-top: -10px;
   font-size: 20px;
+}
 
-  :global(.btn) {
-    margin-top: 80px;
-  }
+.buttons {
+  margin-top: 80px;
 }
 
 .steps {

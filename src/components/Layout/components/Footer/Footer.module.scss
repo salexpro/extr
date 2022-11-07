@@ -1,14 +1,17 @@
 @import '~styles/mixins';
 
 .footer {
+  padding: 60px 0;
+  margin-top: 100px;
+  background: $black;
+
   &__inner {
     display: grid;
-    grid-template-columns: 1fr repeat(2, auto);
-    grid-auto-flow: column;
-    column-gap: 130px;
+    grid-template-columns: 2fr auto 2fr;
+    // grid-auto-flow: column;
+    column-gap: 40px;
     align-items: center;
-    padding: 80px 0;
-    margin: 0 90px;
+    justify-content: space-between;
   }
 
   &__logo {

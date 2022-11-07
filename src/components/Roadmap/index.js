@@ -29,9 +29,11 @@ const Roadmap = () => {
             any way.
           </p>
 
-          <Button href="#" target="_blank" variant="outline-primary">
-            Read more on Mirror
-          </Button>
+          <div className={s.buttons}>
+            <Button href="#" target="_blank" variant="outline-primary">
+              Read more on Mirror
+            </Button>
+          </div>
         </div>
 
         <div className={s.steps}>

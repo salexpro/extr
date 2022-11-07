@@ -28,7 +28,8 @@ body {
 }
 
 ::selection {
-  background: rgba($primary, 0.3);
+  color: $black;
+  background: $primary;
 }
 
 [type='search']::-webkit-search-decoration,
