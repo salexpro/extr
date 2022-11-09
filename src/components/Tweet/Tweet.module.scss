@@ -1,22 +1,37 @@
 /* stylelint-disable no-descending-specificity */
 @import '~styles/mixins';
 
+@mixin hover {
+  .content {
+    box-shadow: inset 0 0 0 8px $black, 0 8px 0 $primary, 8px 8px 0 $primary;
+  }
+
+  .bar span {
+    color: $white;
+  }
+}
+
 .tweet {
+  --px: 8px;
+
   display: block;
-  margin-right: 8px;
-  margin-bottom: 8px;
+  margin-right: var(--px);
+  margin-bottom: var(--px);
   font-size: 18px;
   text-decoration: none;
 
-  &:hover,
-  &:focus {
-    .content {
-      box-shadow: inset 0 0 0 8px $black, 0 8px 0 $primary, 8px 8px 0 $primary;
-    }
+  @include b-d(md) {
+    --px: 6px;
+  }
 
-    .bar span {
-      color: $white;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @include hover;
     }
+  }
+
+  &:focus {
+    @include hover;
   }
 
   &.partner {
@@ -38,6 +53,16 @@
   color: $white;
   background: $black;
 
+  @include b-d(xl) {
+    height: 50px;
+    padding: 0 30px;
+
+    > svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   span {
     display: grid;
     grid-auto-flow: column;
@@ -45,6 +70,23 @@
     align-items: center;
     color: $primary;
     transition: color 300ms;
+    @include b-d(xl) {
+      font-size: 16px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    @include b-d(md) {
+      font-size: 14px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 }
 
@@ -58,13 +100,20 @@
   grid-gap: 15px 20px;
   align-items: center;
   padding: 48px 40px 50px;
-  margin-top: -8px;
-  // font-size: 20px;
-  // line-height: 1.6;
+  margin-top: calc(0px - var(--px));
   color: $black;
   background: $white;
-  box-shadow: inset 0 0 0 8px $black, 0 8px 0 $black, 8px 8px 0 $black;
+  box-shadow: inset 0 0 0 var(--px) $black, 0 var(--px) 0 $black,
+    var(--px) var(--px) 0 $black;
   transition: box-shadow 300ms;
+
+  @include b-d(xl) {
+    padding: 38px 30px 40px;
+  }
+  @include b-d(md) {
+    row-gap: 10px;
+    padding: 36px 30px 30px;
+  }
 }
 
 .avatar {
@@ -72,6 +121,9 @@
   overflow: hidden;
   border-radius: 50%;
   transform: translateZ(0);
+  @include b-d(md) {
+    max-width: 56px;
+  }
 }
 
 .name {
@@ -80,6 +132,9 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
+  @include b-d(md) {
+    font-size: 16px;
+  }
 }
 
 .handle {
@@ -89,6 +144,10 @@
   line-height: 1;
   color: #989898;
 
+  @include b-d(md) {
+    font-size: 14px;
+  }
+
   &::before {
     content: '@';
   }
@@ -97,6 +156,15 @@
 .text {
   grid-area: text;
   margin: 15px 0 0;
+
+  @include b-d(xl) {
+    font-size: 16px;
+  }
+
+  @include b-d(md) {
+    margin-top: 10px;
+    font-size: 14px;
+  }
 
   span {
     color: $primary;

@@ -4,6 +4,14 @@ h1 {
   margin-bottom: 40px;
   line-height: 1.2;
 
+  @include b-d(xl) {
+    font-size: 48px;
+  }
+
+  @include b-d(md) {
+    font-size: 36px;
+  }
+
   &::after {
     display: inline-block;
     height: 1em;
@@ -25,15 +33,52 @@ h3 {
 }
 
 h2 {
+  @include b-d(xxl) {
+    br {
+      display: none;
+    }
+  }
+  @include b-d(xl) {
+    font-size: 36px;
+  }
+  @include b-d(md) {
+    font-size: 26px;
+  }
+
   span {
     height: 1.43em;
   }
 }
 
 h3 {
+  @include b-d(xl) {
+    font-size: 18px;
+  }
+
+  @include b-d(md) {
+    font-size: 16px;
+  }
+
   span {
+    display: inline;
     height: 1.8em;
   }
 }
 
-// .lead
+p {
+  @include b-d(xl) {
+    font-size: 18px;
+  }
+  @include b-d(md) {
+    font-size: 16px;
+  }
+}
+
+.lead {
+  @include b-d(xl) {
+    font-size: 18px;
+  }
+  @include b-d(md) {
+    font-size: 16px;
+  }
+}

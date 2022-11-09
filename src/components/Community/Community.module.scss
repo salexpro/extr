@@ -3,16 +3,39 @@
 .community {
   padding: 150px 0;
   background-color: $primary;
+  @include b-d(xl) {
+    padding: 120px 0;
+    margin-bottom: 80px;
+  }
+  @include b-d(lg) {
+    padding: 100px 0;
+  }
 }
 
 .window {
   display: grid;
-  grid-template-columns: minmax(100px, 550px) auto;
-  column-gap: 30px;
+  grid-gap: 60px 30px;
   align-items: center;
   justify-content: space-between;
   justify-self: start;
   width: 100%;
+
+  @include b-d(xl) {
+    column-gap: 60px;
+  }
+
+  @include b-up(lg) {
+    grid-template-columns: minmax(100px, 550px) auto;
+  }
+
+  @include b-d(lg) {
+    justify-items: start;
+    max-width: 420px;
+  }
+
+  @include b-d(md) {
+    row-gap: 40px;
+  }
 
   &__title {
     line-height: 1.4;
@@ -22,5 +45,11 @@
     display: grid;
     grid-auto-flow: column;
     column-gap: 30px;
+    @include b-d(xl) {
+      column-gap: 20px;
+    }
+    @include b-d(md) {
+      column-gap: 10px;
+    }
   }
 }

@@ -17,21 +17,77 @@
     column-gap: 36px;
     justify-self: end;
     transition: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    @include b-o(lg) {
+      top: 90px;
+      right: 16px;
+      font-size: 14px;
+
+      a {
+        column-gap: 12px;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @include b-d(lg) {
+      position: static;
+      grid-auto-flow: column;
+    }
+
+    @include b-d(md) {
+      display: none;
+    }
+  }
+
+  &.mobile {
+    row-gap: 36px;
+    justify-self: start;
   }
 
   &.footer {
+    grid-area: social;
     grid-auto-flow: column;
     justify-self: end;
+
+    @include b-o(lg) {
+      font-size: 14px;
+
+      a {
+        column-gap: 12px;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @include b-d(md) {
+      grid-auto-flow: row;
+      row-gap: 20px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      font-size: 14px;
+    }
   }
 
   &.scroll {
-    row-gap: 106px;
-    transition-delay: 50ms;
-    transform: translate(-155px, -155px) rotate(-90deg);
-
-    li {
+    @include b-up(xl) {
+      row-gap: 106px;
       transition-delay: 50ms;
-      transform: rotate(90deg);
+      transform: translate(-155px, -156px) rotate(-90deg);
+
+      li {
+        transition-delay: 50ms;
+        transform: rotate(90deg);
+      }
     }
   }
 

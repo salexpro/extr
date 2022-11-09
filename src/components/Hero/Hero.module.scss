@@ -2,21 +2,50 @@
 
 .hero {
   padding-top: 65px;
+
+  @include b-d(xl) {
+    padding-top: 52px;
+    padding-bottom: 80px;
+  }
+  @include b-d(md) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 .box {
   position: relative;
-  // max-width: 1100px;
   padding: 80px 60px;
   margin: 0 90px 40px;
   color: $black;
   background: $white;
   box-shadow: inset 0 0 0 8px;
+  @include b-d(xl) {
+    margin: 0 72px 33px;
+  }
+
+  @include b-d(lg) {
+    padding: 60px 40px 82px;
+    margin: 0 0 40px;
+  }
+
+  @include b-d(md) {
+    padding: 60px 20px 120px;
+    margin: 0 -20px 100px;
+    box-shadow: inset 0 0 0 6px;
+  }
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.lead) {
     max-width: 700px;
     margin-bottom: 60px;
+    @include b-d(xl) {
+      max-width: 540px;
+      margin-bottom: 40px;
+    }
+    @include b-d(lg) {
+      max-width: 335px;
+    }
   }
 }
 
@@ -29,6 +58,28 @@
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-duration: 350ms;
   transition-property: transform, opacity, visibility;
+
+  @include b-d(xxl) {
+    bottom: 30px;
+  }
+
+  @include b-d(xl) {
+    right: -72px;
+    bottom: -33px;
+    max-width: 400px;
+  }
+
+  @include b-d(lg) {
+    right: -11px;
+    bottom: 60px;
+    max-width: 360px;
+  }
+
+  @include b-d(md) {
+    right: 20px;
+    bottom: -70px;
+    max-width: 310px;
+  }
 
   &.closed {
     visibility: hidden;
@@ -43,6 +94,9 @@
     height: 50px;
     padding: 0 20px;
     background: $black;
+    @include b-d(xl) {
+      height: 40px;
+    }
   }
 
   &__content {
@@ -60,6 +114,34 @@
     color: $white;
     background: $body-bg;
     border: 8px solid $black;
+
+    @include b-d(xl) {
+      min-height: 132px;
+      padding: 20px 40px;
+      font-size: 16px;
+    }
+    @include b-d(md) {
+      min-height: 120px;
+      font-size: 14px;
+    }
+
+    img {
+      @include b-d(xl) {
+        max-width: 45px;
+      }
+      @include b-d(md) {
+        max-width: 36px;
+      }
+    }
+  }
+
+  @media (max-width: 730px) and (min-width: map-get($grid-breakpoints, md)) {
+    left: 340px;
+    width: auto;
+
+    &__content {
+      padding: 20px 11.6%;
+    }
   }
 
   &__close {
@@ -73,6 +155,13 @@
       color: $white;
       transform: rotate(90deg);
     }
+
+    svg {
+      @include b-d(xl) {
+        width: 18px;
+        height: 18px;
+      }
+    }
   }
 }
 
@@ -80,18 +169,56 @@
   display: grid;
   row-gap: 30px;
 
+  @include b-d(lg) {
+    row-gap: 20px;
+  }
+
   &__title {
     font-size: 18px;
     font-weight: 400;
+    line-height: 1;
+    @include b-d(xl) {
+      font-size: 16px;
+    }
+    @include b-d(md) {
+      font-size: 14px;
+    }
+  }
+
+  &__wrap {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+
+    @include b-d(lg) {
+      padding: 0 20px;
+      margin: 0 -20px;
+    }
   }
 
   &__list {
     display: grid;
     grid-auto-flow: column;
     column-gap: 26px;
+    min-width: 728px;
     padding: 0;
     margin: 0;
     list-style: none;
+
+    @include b-d(xl) {
+      column-gap: 8px;
+    }
+
+    @include b-d(lg) {
+      column-gap: 0;
+    }
 
     img {
       height: auto;

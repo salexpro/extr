@@ -1,2 +1,7 @@
 .nav {
+  &-link {
+    @include b-d(xxl) {
+      padding: 8px 12px;
+    }
+  }
 }

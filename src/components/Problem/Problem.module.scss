@@ -1,9 +1,47 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@import '~styles/mixins';
+
 .problem {
   padding-top: 150px;
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+  }
+}
+
+.top {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  @include b-up(xl) {
+    :global(.swiper-controls) {
+      display: none;
+    }
+  }
 }
 
 .tweets {
   display: grid;
   grid-template-columns: repeat(3, 33.33%);
-  margin-top: 60px;
+  margin-top: 70px;
+
+  @include b-d(xl) {
+    padding: 0 40px;
+    margin-right: -40px;
+    margin-left: -40px;
+  }
+
+  @include b-d(lg) {
+    padding: 0 20px;
+    margin-right: -20px;
+    margin-left: -20px;
+  }
+  @include b-d(md) {
+    margin-top: 50px;
+  }
 }

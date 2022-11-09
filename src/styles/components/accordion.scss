@@ -1,17 +1,38 @@
 .accordion {
-  &-item {
-    &:not(:last-child) {
-      margin-bottom: 28px;
-    }
+  display: grid;
+  row-gap: 20px;
+
+  --px: 8px;
+
+  @include b-d(md) {
+    --px: 6px;
+    --bs-accordion-body-padding-x: 30px;
+
+    row-gap: 10px;
   }
 
   &-header {
-    margin-right: 8px;
+    margin-right: var(--px);
   }
 
   &-button {
+    column-gap: 20px;
     font-size: 20px;
     font-weight: 600;
+    @include b-d(xl) {
+      padding-right: 30px;
+      font-size: 18px;
+
+      --bs-accordion-btn-padding-y: 15px;
+      --bs-accordion-btn-icon-width: 24px;
+    }
+
+    @include b-d(md) {
+      --bs-accordion-btn-icon-width: 20px;
+
+      padding-left: 30px;
+      font-size: 16px;
+    }
   }
 
   &-collapse {
@@ -19,9 +40,10 @@
   }
 
   &-body {
-    margin: -8px 8px 8px 0;
+    margin: calc(0px - var(--px)) var(--px) var(--px) 0;
     background: $white;
-    box-shadow: inset 0 0 0 8px $black, 0 8px 0 $black, 8px 8px 0 $black;
+    box-shadow: inset 0 0 0 var(--px) $black, 0 var(--px) 0 $black,
+      var(--px) var(--px) 0 $black;
 
     p:last-child {
       margin: 0;

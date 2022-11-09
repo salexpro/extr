@@ -2,8 +2,9 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper'
+import { FreeMode, Navigation } from 'swiper'
 
+import Controls from '../Controls'
 import Tweet from '../Tweet'
 
 import * as s from './Problem.module.scss'
@@ -24,7 +25,6 @@ const Problem = () => {
                 height: 64
                 quality: 100
                 placeholder: NONE
-                layout: FIXED
               )
             }
           }
@@ -38,14 +38,31 @@ const Problem = () => {
 
   return (
     <Container as="section" id="problem" className={s.problem}>
-      <h2>
-        What <span>community</span> needs
-      </h2>
+      <div className={s.top}>
+        <h2>
+          What <span>community</span> needs
+        </h2>
+        <Controls />
+      </div>
+
       <Swiper
-        slidesPerView={3}
-        spaceBetween={20}
-        freeMode
-        modules={[FreeMode]}
+        slidesPerView="auto"
+        spaceBetween={10}
+        modules={[FreeMode, Navigation]}
+        navigation={{
+          prevEl: '#problem .swiper__prev',
+          nextEl: '#problem .swiper__next',
+        }}
+        breakpoints={{
+          640: {
+            spaceBetween: 20,
+          },
+          1200: {
+            slidesPerView: 3,
+            freeMode: true,
+          },
+        }}
+        grabCursor
         className={s.tweets}
       >
         {allNeedsJson.nodes.map((tweet) => (

@@ -13,6 +13,7 @@ const Tweet = ({ avatar, link, name, handle, tweet, variant }) => {
       target="_blank"
       className={cn(s.tweet, { [s[variant]]: variant })}
       rel="noreferrer"
+      tabIndex="0"
     >
       <div className={s.bar}>
         <Icon name="icon-twitter" size={30} />

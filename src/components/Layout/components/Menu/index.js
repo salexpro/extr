@@ -8,23 +8,27 @@ import MENU from './constants'
 
 import * as s from './Menu.module.scss'
 
-const Menu = ({ variant, scroll }) => {
+const Menu = ({ variant, scroll, handleClose }) => {
   const handleScroll = (e, link) => {
     e.preventDefault()
-    gsap.to(window, { scrollTo: link, ease: 'power2' })
+    setTimeout(() => {
+      gsap.to(window, { scrollTo: link, ease: 'power2' })
+    }, handleClose && 300)
+
+    if (handleClose) handleClose()
   }
 
   return (
     <Nav
       className={cn(s.nav, {
-        [`nav--${variant}`]: variant,
+        [s[variant]]: variant,
         [s.scroll]: scroll,
       })}
       as="ul"
     >
       {MENU.map(({ name, link }) => (
         <Nav.Item as="li" key={name}>
-          <Nav.Link href={`#${link}`} onClick={(e) => handleScroll(e, link)}>
+          <Nav.Link href={link} onClick={(e) => handleScroll(e, link)}>
             {name}
           </Nav.Link>
         </Nav.Item>
@@ -36,11 +40,13 @@ const Menu = ({ variant, scroll }) => {
 Menu.defaultProps = {
   variant: '',
   scroll: false,
+  handleClose: null,
 }
 
 Menu.propTypes = {
   variant: PropTypes.string,
   scroll: PropTypes.bool,
+  handleClose: PropTypes.func,
 }
 
 export default Menu

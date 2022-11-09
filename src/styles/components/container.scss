@@ -7,7 +7,7 @@
   &-fluid {
     padding: 0 40px;
     margin: auto;
-    @include media-breakpoint-down(sm) {
+    @include b-d(lg) {
       padding: 0 20px;
     }
   }

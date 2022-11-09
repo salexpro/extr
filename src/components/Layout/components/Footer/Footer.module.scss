@@ -5,25 +5,61 @@
   margin-top: 100px;
   background: $black;
 
+  @include b-d(xl) {
+    padding: 40px 0;
+    margin-top: 80px;
+  }
+
+  @include b-d(md) {
+    margin-top: 60px;
+  }
+
   &__inner {
     display: grid;
+    grid-template-areas: 'logo mail social';
     grid-template-columns: 2fr auto 2fr;
-    column-gap: 40px;
+    grid-gap: 17px 40px;
     align-items: center;
     justify-content: space-between;
+
+    @include b-d(xl) {
+      column-gap: 100px;
+    }
+    @include b-d(lg) {
+      grid-template-areas:
+        'logo mail'
+        'social social';
+      grid-template-columns: auto auto;
+    }
+    @include b-d(md) {
+      grid-template-areas:
+        'logo social'
+        'mail social';
+      column-gap: 20px;
+    }
   }
 
   &__logo {
-    // justify-self: start;
+    grid-area: logo;
+    @include b-d(md) {
+      align-self: end;
+    }
   }
 
   &__mail {
     position: relative;
     display: block;
+    grid-area: mail;
     overflow: hidden;
     font-weight: 500;
+    line-height: 1.6;
     color: $white;
     text-decoration: none;
+
+    @include b-d(md) {
+      align-self: start;
+      font-size: 14px;
+    }
 
     &::before {
       position: absolute;

@@ -3,45 +3,117 @@
 .balancer {
   padding-top: 150px;
   padding-bottom: 150px;
+
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+    padding-bottom: 100px;
+  }
 }
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 80px;
-  margin-bottom: 80px;
+  grid-gap: 40px 10px;
+  margin: 80px 0;
   counter-reset: steps;
+  @include b-up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include b-d(md) {
+    margin: 60px 0;
+  }
 }
 
 .step {
   display: grid;
+  grid-template-areas:
+    'num'
+    'header'
+    'img';
   row-gap: 40px;
-  max-width: 300px;
   counter-increment: steps;
+
+  @include b-up(md) {
+    grid-template-rows: auto 1fr auto;
+    max-width: 300px;
+  }
+
+  @include b-d(md) {
+    grid-template-areas:
+      'num num'
+      'header img';
+    grid-gap: 16px 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &::before {
     display: block;
+    grid-area: num;
     font-size: $h2-font-size;
     font-weight: $headings-font-weight;
     line-height: 1;
     color: $primary;
     content: counter(steps, decimal-leading-zero);
+    @include b-d(xl) {
+      font-size: 36px;
+    }
+  }
+
+  h3 {
+    grid-area: header;
+  }
+
+  svg {
+    grid-area: img;
+    @include b-d(md) {
+      width: 80px;
+      height: 80px;
+    }
   }
 }
 
 .footer {
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 46px;
+  grid-gap: 60px 46px;
   align-items: center;
+
+  @include b-d(xl) {
+    column-gap: 60px;
+  }
+
+  @include b-up(lg) {
+    grid-template-columns: auto 1fr;
+  }
+
+  @include b-o(md) {
+    justify-items: start;
+  }
+  @include b-d(md) {
+    row-gap: 40px;
+  }
 
   &__buttons {
     display: grid;
     grid-auto-flow: column;
     column-gap: 30px;
+
+    @include b-d(xl) {
+      column-gap: 20px;
+    }
   }
 
   &__warn {
     color: #929292;
+    @include b-d(xl) {
+      max-width: 480px;
+      font-size: 14px;
+    }
+    @include b-d(lg) {
+      max-width: none;
+    }
   }
 }

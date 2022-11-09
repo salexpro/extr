@@ -1,24 +1,64 @@
-/* stylelint-disable selector-pseudo-class-no-unknown */
+@import '~styles/mixins';
+
 .roadmap {
   padding-top: 150px;
+
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+
+  @include b-d(md) {
+    padding-top: 20px;
+  }
 }
 
 .container {
   display: grid;
   grid-template-columns: minmax(100px, 430px) 1fr;
-  column-gap: 130px;
+  grid-gap: 80px 130px;
   margin-top: 75px;
+
+  @include b-d(xxl) {
+    column-gap: 70px;
+  }
+
+  @include b-d(xl) {
+    grid-template-columns: 5fr 9fr;
+    margin-top: 60px;
+  }
+
+  @include b-d(lg) {
+    grid-template-columns: none;
+  }
+
+  @include b-d(md) {
+    row-gap: 60px;
+    margin-top: 40px;
+  }
 }
 
 .content {
-  margin-top: -10px;
   font-size: 20px;
+  @include b-up(xl) {
+    margin-top: -10px;
+  }
 }
 
 .buttons {
   margin-top: 80px;
+  @include b-d(xl) {
+    margin-top: 60px;
+  }
+  @include b-d(md) {
+    margin-top: 40px;
+  }
 }
 
 .steps {
   counter-reset: steps;
+  @include b-d(md) {
+    display: grid;
+    row-gap: 10px;
+  }
 }

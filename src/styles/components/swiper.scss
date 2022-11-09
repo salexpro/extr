@@ -1,0 +1,54 @@
+.swiper {
+  &-slide {
+    @include b-d(xl) {
+      width: 405px + 8px;
+    }
+    @include b-d(md) {
+      width: 300px + 6px;
+    }
+  }
+
+  &-controls {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 30px;
+    @include b-d(xl) {
+      column-gap: 20px;
+    }
+    @include b-d(md) {
+      display: none;
+    }
+  }
+
+  &__prev {
+    transform: scaleX(-1);
+  }
+
+  &__prev,
+  &__next {
+    padding: 10px;
+    margin: -10px;
+    color: $white;
+    transition: color 300ms, opacity 300ms;
+
+    &:not([disabled]) {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $primary;
+      }
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+
+    svg {
+      @include b-d(xl) {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+}

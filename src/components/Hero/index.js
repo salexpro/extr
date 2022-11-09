@@ -55,13 +55,15 @@ const Hero = () => {
 
       <div className={s.partners}>
         <h3 className={s.partners__title}>Partnered with:</h3>
-        <ul className={s.partners__list}>
-          {PARTNERS.map(({ name, img }) => (
-            <li key={name}>
-              <img src={img} width={186} height={120} alt={name} />
-            </li>
-          ))}
-        </ul>
+        <div className={s.partners__wrap}>
+          <ul className={s.partners__list}>
+            {PARTNERS.map(({ name, img }) => (
+              <li key={name}>
+                <img src={img} width={186} height={120} alt={name} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Container>
   )

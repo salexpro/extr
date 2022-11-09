@@ -4,17 +4,33 @@
   padding: 150px 0;
   background: $primary;
 
+  @include b-d(xl) {
+    padding: 120px 0;
+    margin-bottom: 80px;
+  }
+
+  @include b-d(md) {
+    padding: 100px 0 80px;
+  }
+
   &__inner {
-    // display: grid;
-    display: flex;
-    align-items: end;
+    position: relative;
+
+    @include b-up(lg) {
+      display: flex;
+      grid-auto-flow: column;
+      align-items: end;
+    }
   }
 }
 
 .window {
   &__content {
-    // display: grid;
     max-width: 510px;
+
+    @include b-d(xl) {
+      max-width: 490px;
+    }
 
     h2 {
       margin-bottom: 60px;
@@ -27,15 +43,37 @@
     grid-auto-flow: column;
     column-gap: 30px;
     justify-content: start;
+    @include b-d(xl) {
+      column-gap: 20px;
+    }
   }
 
   &__envelope {
     display: grid;
     grid-auto-flow: column;
-    column-gap: 40px;
+    grid-gap: 30px 40px;
     align-items: center;
     justify-content: start;
     font-weight: 500;
+
+    @include b-d(xl) {
+      font-size: 18px;
+
+      svg {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    @include b-d(md) {
+      grid-auto-flow: row;
+      font-size: 16px;
+
+      svg {
+        width: 56px;
+        height: 56px;
+      }
+    }
 
     a {
       font-weight: 600;

@@ -11,13 +11,7 @@ const Vision = () => {
       <h2>What we believe</h2>
 
       <div className={s.windows}>
-        <Window
-          title="Mission"
-          width={846}
-          style={{
-            paddingBottom: 164,
-          }}
-        >
+        <Window title="Mission" variant="mission">
           <p className={s.window__content}>
             The RPC layer has to become truly reliable and properly
             decentralized so that developers can focus on making Web3 a mundane
@@ -25,11 +19,11 @@ const Vision = () => {
           </p>
         </Window>
 
-        <Window title="Vision" width={715} variant="dark">
+        <Window title="Vision" variant="dark">
           <p>
-            <span>Decentralized. Open-source. Community-driven.</span>
-            That’s what the RPC layer should be like. And that’s what it will
-            become now.
+            <span>Decentralized.</span> <span>Open-source.</span>{' '}
+            <span>Community-driven.</span> That’s what the RPC layer should be
+            like. And that’s what it will become now.
           </p>
         </Window>
       </div>

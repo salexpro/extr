@@ -1,0 +1,15 @@
+.offcanvas-xl.offcanvas-end {
+  // top: 60px;
+  // height: calc(100% - 60px);
+  @include b-up(xl) {
+    display: none;
+  }
+}
+
+.offcanvas-body {
+  display: grid;
+  row-gap: 60px;
+  align-content: start;
+  // overflow: hidden;
+  overflow-x: hidden;
+}

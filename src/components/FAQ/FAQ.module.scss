@@ -1,8 +1,35 @@
+@import '~styles/mixins';
+
 .faq {
   padding-top: 150px;
+  @include b-d(xl) {
+    padding-top: 40px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+  }
 }
 
 .accordion {
   margin: 75px 90px 0;
   font-size: 18px;
+
+  @include b-d(xl) {
+    margin-right: 0;
+    margin-left: 0;
+
+    &,
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @include b-d(md) {
+    margin-top: 60px;
+
+    &,
+    p {
+      font-size: 14px;
+    }
+  }
 }

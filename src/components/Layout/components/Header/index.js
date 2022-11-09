@@ -1,5 +1,5 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Container, Offcanvas } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import gsap from 'gsap'
 import cn from 'classnames'
@@ -23,13 +23,19 @@ const Header = ({ siteTitle }) => {
     gsap.to(window, { scrollTo: '#top', ease: 'power2' })
   }
 
+  const [menu, setMenu] = useState(false)
+
+  const handleMenu = () => {
+    setMenu((prev) => !prev)
+  }
+
   return (
     <header className={cn(s.header, { [s.scroll]: isScrolled })}>
       <Container className={s.inner}>
         <a href="#top" onClick={handleTop} className={s.logo}>
           <img src={logo} width={140} alt={siteTitle} />
         </a>
-        <Menu scroll={isScrolled} />
+        <Menu variant="header" scroll={isScrolled} />
         <Social variant="header" scroll={isScrolled} />
         <div className={s.bg}>
           <div className={s.circles}>
@@ -46,7 +52,26 @@ const Header = ({ siteTitle }) => {
         </div>
       </Container>
 
-      {/* <button onClick={kkk}>dsfsdfs</button> */}
+      <button
+        type="button"
+        className={cn(s.hamb, { [s.open]: menu })}
+        onClick={handleMenu}
+      >
+        <span />
+      </button>
+
+      <Offcanvas
+        show={menu}
+        onHide={handleMenu}
+        responsive="xl"
+        placement="end"
+        restoreFocus={false}
+      >
+        <Offcanvas.Body>
+          <Menu variant="mobile" handleClose={handleMenu} />
+          <Social variant="mobile" />
+        </Offcanvas.Body>
+      </Offcanvas>
     </header>
   )
 }

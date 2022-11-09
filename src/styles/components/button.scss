@@ -10,6 +10,10 @@ button {
 .btn {
   --pixel: 8px;
 
+  @include b-d(md) {
+    --pixel: 6px;
+  }
+
   clip-path: polygon(
     0 calc(var(--pixel) * 2),
     var(--pixel) calc(var(--pixel) * 2),
@@ -32,6 +36,14 @@ button {
     var(--pixel) calc(100% - calc(var(--pixel) * 2)),
     0 calc(100% - calc(var(--pixel) * 2))
   );
+
+  @include b-d(xl) {
+    padding: 20px 30px;
+    font-size: 16px;
+  }
+  @include b-d(md) {
+    padding: 21.5px 28px;
+  }
 
   &-primary {
     --bs-btn-hover-color: #{$primary};

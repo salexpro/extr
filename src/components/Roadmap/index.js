@@ -26,8 +26,7 @@ const Roadmap = () => {
           <p>
             We are also developing a paid solution for enterprises and
             blockchain platforms. Its operation will be in the hands of
-            battle-tested validators, with no single entity controlling it in
-            any way.
+            battle-tested validators.
           </p>
 
           <div className={s.buttons}>

@@ -3,6 +3,14 @@
 .partners {
   padding-top: 150px;
   padding-bottom: 150px;
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+    padding-bottom: 100px;
+  }
 }
 
 .top {
@@ -19,38 +27,16 @@
   grid-template-columns: repeat(3, 33.33%);
   padding-right: var(--space);
   padding-left: var(--space);
-  margin-top: 65px;
-}
+  margin-top: 70px;
 
-.controls {
-  display: grid;
-  grid-auto-flow: column;
-  column-gap: 30px;
-}
-
-.control {
-  &__prev {
-    transform: scaleX(-1);
+  @include b-d(xxl) {
+    --space: 40px;
   }
 
-  &__prev,
-  &__next {
-    padding: 10px;
-    margin: -10px;
-    color: $white;
-    transition: color 300ms, opacity 300ms;
-
-    &:not([disabled]) {
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        color: $primary;
-      }
-    }
-
-    &[disabled] {
-      opacity: 0.5;
-    }
+  @include b-d(lg) {
+    --space: 20px;
+  }
+  @include b-d(md) {
+    margin-top: 60px;
   }
 }

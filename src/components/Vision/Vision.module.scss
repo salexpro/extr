@@ -1,14 +1,35 @@
+@import '~styles/mixins';
+
 .vision {
   padding-top: 150px;
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+  }
 }
 
 .windows {
   display: grid;
   margin-top: 85px;
+  @include b-d(xl) {
+    margin-top: 80px;
+  }
+  @include b-d(md) {
+    margin-top: 60px;
+  }
 }
 
 .window {
   &__content {
     max-width: 455px;
+    @include b-d(xl) {
+      font-size: 18px;
+    }
+    @include b-d(md) {
+      font-size: 16px;
+    }
   }
 }

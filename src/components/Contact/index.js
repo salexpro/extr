@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <section id="contact" className={s.contact}>
       <Container className={s.contact__inner}>
-        <Window title="Community" width={846}>
+        <Window title="Community" variant="contact">
           <div className={s.window__content}>
             <h2>
               Join our community to build a decentralized RPC layer of Web3
@@ -34,7 +34,7 @@ const Contact = () => {
             </div>
           </div>
         </Window>
-        <Window title="Contact us" variant="envelope" width={600}>
+        <Window title="Contact us" variant="envelope">
           <div className={s.window__envelope}>
             <Icon name="ill-envelope" size={80} />
             <div>
