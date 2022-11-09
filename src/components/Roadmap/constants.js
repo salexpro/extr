@@ -14,7 +14,7 @@ const ROADMAP = [
     content: 'Public load balancer on Solana',
   },
   {
-    content: 'Extrnode for enterprises',
+    content: 'extrnode Premium',
   },
 ]
 

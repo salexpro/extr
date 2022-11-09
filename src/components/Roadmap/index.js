@@ -10,7 +10,6 @@ import Window from '../Window'
 import * as s from './Roadmap.module.scss'
 
 import ROADMAP from './constants'
-import SOCIAL from '../Social/constants'
 
 gsap.registerPlugin(scrollTrigger)
 
@@ -54,7 +53,7 @@ const Roadmap = () => {
 
           <div className={s.buttons}>
             <Button
-              href={SOCIAL.mirror.link}
+              href="https://mirror.xyz/extrnode.eth/7bgVDpJP4_1FNWYBfX_OzFaOtK39oDuFOxQxmxdCaQQ"
               target="_blank"
               variant="outline-primary"
             >

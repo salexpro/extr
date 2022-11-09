@@ -16,7 +16,6 @@ import '~styles/app.scss'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-// import SVGDefs from './components/SVGDefs'
 
 import { layout } from './Layout.module.scss'
 
