@@ -8,7 +8,7 @@
   width: 100%;
 
   @include b-up(xl) {
-    z-index: 2;
+    z-index: 10;
   }
 
   --hamb: 130px;

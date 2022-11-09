@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import cn from 'classnames'
 import gsap from 'gsap'
+import { TypeAnimation } from 'react-type-animation'
 
 import Icon from '../Icon'
 
@@ -22,7 +23,11 @@ const Hero = () => {
   return (
     <Container id="top" as="section" className={s.hero}>
       <div className={s.box}>
-        <h1>Battle-tested decentralized RPC gateway</h1>
+        <TypeAnimation
+          sequence={['Battle-tested decentralized RPC gateway']}
+          wrapper="h1"
+          cursor
+        />
         <p className="lead">
           Connect your dApp to a decentralized cluster of RPC nodes and
           automatically reroute responses if any node is down
