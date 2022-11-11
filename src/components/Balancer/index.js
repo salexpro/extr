@@ -24,10 +24,18 @@ const Balancer = () => {
       </div>
       <div className={s.footer}>
         <div className={s.footer__buttons}>
-          <Button href="#" target="_blank" variant="outline-primary">
+          <Button
+            href="https://hub.docker.com/r/extrnode/solana-lb"
+            target="_blank"
+            variant="outline-primary"
+          >
             Docker Hub
           </Button>
-          <Button href="#" target="_blank" variant="outline-light">
+          <Button
+            href="https://github.com/extrnode/solana-lb"
+            target="_blank"
+            variant="outline-light"
+          >
             GitHub
           </Button>
         </div>

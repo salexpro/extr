@@ -104,6 +104,10 @@
         font-weight: 600;
         color: $black;
 
+        &::selection {
+          background: $white;
+        }
+
         @include b-d(lg) {
           height: 1.8em;
           margin-bottom: 1px;
