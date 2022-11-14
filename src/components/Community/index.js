@@ -18,15 +18,15 @@ const Community = () => {
               <br /> build a decentralized RPC <br /> layer of Web3
             </h2>
             <div className={s.window__buttons}>
-              {Object.values(SOCIAL)
-                .slice(1)
+              {SOCIAL.slice(1)
                 .reverse()
-                .map(({ link, variant, label }) => (
+                .map(({ key, link, variant, label }) => (
                   <Button
-                    key={variant}
+                    key={key}
                     href={link}
                     target="_blank"
                     variant={variant}
+                    className={`gtm-${key}-second`}
                   >
                     {label}
                   </Button>

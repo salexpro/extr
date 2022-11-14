@@ -2,6 +2,7 @@ const MENU = [
   {
     name: 'Load balancer',
     link: '#balancer',
+    className: 'gtm-load-balancer-button',
   },
   {
     name: 'Problem',

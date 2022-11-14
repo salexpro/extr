@@ -36,7 +36,7 @@ const Header = ({ siteTitle }) => {
           <img src={logo} width={140} alt={siteTitle} />
         </a>
         <Menu variant="header" scroll={isScrolled} />
-        <Social variant="header" scroll={isScrolled} />
+        <Social variant="header" scroll={isScrolled} gtm="up" />
         <div className={s.bg}>
           <div className={s.circles}>
             {[...Array(3)].map((_, i) => (
@@ -69,7 +69,7 @@ const Header = ({ siteTitle }) => {
       >
         <Offcanvas.Body>
           <Menu variant="mobile" handleClose={handleMenu} />
-          <Social variant="mobile" />
+          <Social variant="mobile" gtm="up" />
         </Offcanvas.Body>
       </Offcanvas>
     </header>

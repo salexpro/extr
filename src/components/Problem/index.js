@@ -70,7 +70,7 @@ const Problem = () => {
       >
         {allNeedsJson.nodes.map((tweet) => (
           <SwiperSlide key={tweet.handle}>
-            <Tweet {...tweet} />
+            <Tweet {...tweet} className="gtm-twitter-1" />
           </SwiperSlide>
         ))}
       </Swiper>

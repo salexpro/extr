@@ -74,7 +74,7 @@ const Partners = () => {
       >
         {allCarouselJson.nodes.map((tweet) => (
           <SwiperSlide key={tweet.handle}>
-            <Tweet variant="partner" {...tweet} />
+            <Tweet {...tweet} variant="partner" className="gtm-twitter-2" />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -28,6 +28,7 @@ const Balancer = () => {
             href="https://hub.docker.com/r/extrnode/solana-lb"
             target="_blank"
             variant="outline-primary"
+            className="gtm-docker-hub-button"
           >
             Docker Hub
           </Button>
@@ -35,6 +36,7 @@ const Balancer = () => {
             href="https://github.com/extrnode/solana-lb"
             target="_blank"
             variant="outline-light"
+            className="gtm-git-hub-button"
           >
             GitHub
           </Button>

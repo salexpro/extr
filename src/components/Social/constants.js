@@ -1,18 +1,21 @@
-const SOCIAL = {
-  mirror: {
+const SOCIAL = [
+  {
+    key: 'mirror',
     label: 'Mirror',
     link: 'https://mirror.xyz/extrnode.eth',
   },
-  twitter: {
+  {
+    key: 'twitter',
     label: 'Twitter',
     variant: 'outline-dark',
     link: 'https://twitter.com/extrnode',
   },
-  discord: {
+  {
+    key: 'discord',
     label: 'Discord',
     variant: 'dark',
     link: 'https://discord.gg/TN3WZrSJCr',
   },
-}
+]
 
 export default SOCIAL

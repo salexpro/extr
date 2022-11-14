@@ -32,7 +32,11 @@ const Hero = () => {
           Connect your dApp to a decentralized cluster of RPC nodes and
           automatically reroute responses if any node is down
         </p>
-        <Button href="#balancer" onClick={handleBalancer}>
+        <Button
+          href="#balancer"
+          onClick={handleBalancer}
+          className="gtm-get-solana-endpoint-button"
+        >
           Get Solana RPC endpoint
         </Button>
 
@@ -50,7 +54,12 @@ const Hero = () => {
             <img src={everstake} width={52} alt="Everstake logo" />
             <span>
               extrnode is powered by{' '}
-              <a href="https://everstake.one" target="_blank" rel="noreferrer">
+              <a
+                href="https://everstake.one"
+                className="gtm-everstake-up"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Everstake
               </a>
             </span>

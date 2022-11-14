@@ -6,12 +6,12 @@ import Icon from '../Icon'
 
 import * as s from './Tweet.module.scss'
 
-const Tweet = ({ avatar, link, name, handle, tweet, variant }) => {
+const Tweet = ({ avatar, link, name, handle, tweet, variant, className }) => {
   return (
     <a
       href={link}
       target="_blank"
-      className={cn(s.tweet, { [s[variant]]: variant })}
+      className={cn(s.tweet, { [s[variant]]: variant }, className)}
       rel="noreferrer"
       tabIndex="0"
     >

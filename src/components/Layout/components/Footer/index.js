@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import cn from 'classnames'
 
 import Social from '~components/Social'
 
@@ -16,14 +17,14 @@ const Footer = ({ siteTitle }) => {
           <img src={logo} width={89} alt={siteTitle} />
         </div>
         <a
-          className={s.footer__mail}
+          className={cn(s.footer__mail, 'gtm-email-down')}
           href="mailto:hey@etrnode.com"
           target="_blank"
           rel="noreferrer"
         >
           hey@etrnode.com
         </a>
-        <Social variant="footer" />
+        <Social variant="footer" gtm="down" />
       </Container>
     </footer>
   )

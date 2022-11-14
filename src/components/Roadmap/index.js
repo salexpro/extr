@@ -56,6 +56,7 @@ const Roadmap = () => {
               href="https://mirror.xyz/extrnode.eth/7bgVDpJP4_1FNWYBfX_OzFaOtK39oDuFOxQxmxdCaQQ"
               target="_blank"
               variant="outline-primary"
+              className="gtm-read-more-mirror"
             >
               Read more on Mirror
             </Button>

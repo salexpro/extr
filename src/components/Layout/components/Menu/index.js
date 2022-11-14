@@ -26,9 +26,13 @@ const Menu = ({ variant, scroll, handleClose }) => {
       })}
       as="ul"
     >
-      {MENU.map(({ name, link }) => (
+      {MENU.map(({ name, link, className }) => (
         <Nav.Item as="li" key={name}>
-          <Nav.Link href={link} onClick={(e) => handleScroll(e, link)}>
+          <Nav.Link
+            href={link}
+            className={className}
+            onClick={(e) => handleScroll(e, link)}
+          >
             {name}
           </Nav.Link>
         </Nav.Item>

@@ -7,12 +7,18 @@ import DATA from './constants'
 
 import * as s from './Social.module.scss'
 
-const Social = ({ variant, scroll }) => {
+const Social = ({ variant, scroll, gtm }) => {
   return (
     <ul className={cn(s.social, { [s[variant]]: variant, [s.scroll]: scroll })}>
-      {Object.values(DATA).map(({ label, link }) => (
-        <li key={label}>
-          <a href={link} aria-label={label} target="_blank" rel="noreferrer">
+      {DATA.map(({ key, link, label }) => (
+        <li key={key}>
+          <a
+            href={link}
+            aria-label={label}
+            className={`gtm-${key}-${gtm}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             {label}
             <Icon name="icon-arrow-up" size={18} />
           </a>
