@@ -14,7 +14,7 @@ const SOCIAL = [
     key: 'discord',
     label: 'Discord',
     variant: 'dark',
-    link: 'https://discord.gg/TN3WZrSJCr',
+    link: 'https://discord.gg/mb2xQ7kgdq',
   },
 ]
 
