@@ -9,6 +9,7 @@ import Window from '../Window'
 
 import * as s from './Roadmap.module.scss'
 
+import SOCIAL from '../Social/constants'
 import ROADMAP from './constants'
 
 gsap.registerPlugin(scrollTrigger)
@@ -39,21 +40,20 @@ const Roadmap = () => {
       <div className={s.container}>
         <div className={s.content}>
           <p>
-            We are about to release our public load balancer to allow Solana
-            developers to connect their dApps to a cluster of public RPC nodes
-            and automatically reroute responses if any node is down. The cluster
-            will be underpinned by Everstake&apos;s validator infrastructure,
-            ensuring 99.9% uptime.
+            Soon we will release a free public load balancer and extrnode
+            Premium for production use.
           </p>
           <p>
-            We are also developing a paid solution for enterprises and
-            blockchain platforms. Its operation will be in the hands of
-            battle-tested validators.
+            Our public load balancer will be hosted on Everstake&apos;s
+            infrastructure. Developers will need to send requests to
+            extrnode&apos;s RPC endpoint for the load balancer to reroute them
+            to other RPCs. The premium version will have only nodes run by
+            battle-tested validators to provide clients with higher reliability.
           </p>
 
           <div className={s.buttons}>
             <Button
-              href="https://mirror.xyz/extrnode.eth/7bgVDpJP4_1FNWYBfX_OzFaOtK39oDuFOxQxmxdCaQQ"
+              href={SOCIAL[0].link}
               target="_blank"
               variant="outline-primary"
               className="gtm-read-more-mirror"

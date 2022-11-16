@@ -1,7 +1,7 @@
 const ROADMAP = [
   {
     status: 'Completed',
-    content: 'Public solana RPC endpoints',
+    content: 'List of public Solana RPC endpoints',
   },
   {
     status: 'Completed',

@@ -67,6 +67,11 @@
     grid-area: header;
   }
 
+  b {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
   svg {
     grid-area: img;
     @include b-d(md) {

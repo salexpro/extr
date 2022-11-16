@@ -4,18 +4,23 @@ const DATA = [
   {
     title: (
       <>
-        Run <span>&lt;docker run --rm -d -p 80:80 extrnode/solana-lb&gt;</span>
+        Run{' '}
+        <span>
+          &lt;docker run <b>-d</b> <b>-p</b> 80:80 <b>--name</b>{' '}
+          <b>solana-lb_c</b> extrnode/solana-lb&gt;
+        </span>
         <br /> command on Docker
       </>
     ),
     icon: 'blank',
   },
   {
-    title: 'Connect your dApp to a balancer',
+    title: 'Connect your decentralized application (dApp) to a balancer',
     icon: 'gear',
   },
   {
-    title: 'Automatically reroute your requests if any node is down',
+    title:
+      'Automatically reroute your requests if any public RPC node in a cluster is down',
     icon: 'routes',
   },
 ]
