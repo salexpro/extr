@@ -1,0 +1,173 @@
+/* stylelint-disable no-descending-specificity */
+.table {
+  background: $white;
+
+  &--endpoints {
+    width: 100%;
+    // table-layout: fixed;
+
+    // td {
+    //   @for $i from 1 through 7 {
+    //     &:nth-child(#{$i}) {
+    //       background-color: rgb(100, $i * 35, $i * 20);
+    //     }
+    //   }
+    // }
+  }
+
+  thead {
+    line-height: 1.4;
+    background: $black;
+  }
+
+  tr {
+    + tr td {
+      border-top: 4px solid $body-bg;
+    }
+  }
+
+  th,
+  td {
+    padding: 30px 20px;
+    vertical-align: top;
+
+    &:not(:only-child):first-child {
+      padding-left: 45px;
+    }
+  }
+
+  th {
+    font-weight: 500;
+    white-space: pre-line;
+  }
+
+  td {
+    line-height: 1.7;
+    color: $black;
+
+    &:first-child {
+      line-height: 1.2;
+    }
+  }
+
+  &__ip {
+    position: relative;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+
+    &.available {
+      --status: #{$primary};
+    }
+
+    &.unavailable {
+      --status: #{$danger};
+    }
+
+    &::before {
+      position: absolute;
+      top: calc(50% - 6px);
+      left: -12px - 15px;
+      width: 12px;
+      height: 12px;
+      content: '';
+      background: var(--status);
+    }
+  }
+
+  &__more {
+    max-width: 260px;
+
+    .table__link {
+      margin-top: 20px;
+    }
+  }
+
+  &__provider {
+    // white-space: nowrap;
+  }
+
+  &__response {
+    display: flex;
+    column-gap: 8px;
+    align-items: start;
+  }
+
+  &__sortButton {
+    display: grid;
+    row-gap: 2px;
+    align-content: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: $primary;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    svg {
+      &:first-child {
+        transform: scaleY(-1);
+      }
+    }
+
+    &.sortAsc {
+      svg {
+        &:first-child {
+          color: $white;
+        }
+      }
+    }
+
+    &.sortDesc {
+      svg {
+        &:last-child {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__empty {
+    text-align: center;
+
+    &[colspan] {
+      padding: 90px 20px;
+    }
+
+    // .h2 {
+    //   display: block;
+    // }
+
+    p {
+      margin: 20px 0 0;
+    }
+
+    b {
+      font-weight: 600;
+    }
+
+    button {
+      display: inline-block;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    line-height: 1.3;
+
+    &:hover {
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      border-bottom: 3px solid $primary;
+      transition: opacity 250ms;
+    }
+  }
+}

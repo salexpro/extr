@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from '@reach/router'
 import { Nav } from 'react-bootstrap'
 import cn from 'classnames'
 import gsap from 'gsap'
@@ -8,7 +9,7 @@ import MENU from './constants'
 
 import * as s from './Menu.module.scss'
 
-const Menu = ({ variant, scroll, handleClose }) => {
+const Menu = ({ variant, scroll, handleClose, isHome }) => {
   const handleScroll = (e, link) => {
     e.preventDefault()
     setTimeout(() => {
@@ -29,9 +30,13 @@ const Menu = ({ variant, scroll, handleClose }) => {
       {MENU.map(({ name, link, className }) => (
         <Nav.Item as="li" key={name}>
           <Nav.Link
-            href={link}
+            {...(isHome
+              ? { href: link, onClick: (e) => handleScroll(e, link) }
+              : {
+                  as: Link,
+                  to: `/${link}`,
+                })}
             className={className}
-            onClick={(e) => handleScroll(e, link)}
           >
             {name}
           </Nav.Link>

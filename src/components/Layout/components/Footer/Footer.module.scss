@@ -47,61 +47,11 @@
   }
 
   &__mail {
-    position: relative;
-    display: block;
     grid-area: mail;
-    overflow: hidden;
-    font-weight: 500;
-    line-height: 1.6;
-    color: $white;
-    text-decoration: none;
 
     @include b-d(md) {
       align-self: start;
       font-size: 14px;
-    }
-
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      // z-index: -1;
-      width: 210%;
-      height: 100%;
-      content: '';
-      background: linear-gradient(
-        90deg,
-        $white 0,
-        $white 50%,
-        $primary 51%,
-        $primary 100%
-      );
-      // background: red;
-      mix-blend-mode: darken;
-      transition: transform 300ms;
-      transition-delay: 0s;
-    }
-
-    &::after {
-      display: block;
-      content: '';
-      border-bottom: 2px solid $primary;
-      transition: transform 300ms;
-      transition-delay: 250ms;
-    }
-
-    &:hover,
-    &:focus {
-      &::before {
-        transition-delay: 250ms;
-        transform: translateX(-51%);
-      }
-
-      &::after {
-        transition-delay: 0s;
-        transform: translateX(-101%);
-      }
     }
   }
 }

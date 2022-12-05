@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import Social from '~components/Social'
+import AnimatedLink from '~components/AnimatedLink'
 
 import logo from '~img/logo.svg'
 
@@ -16,14 +16,14 @@ const Footer = ({ siteTitle }) => {
         <div className={s.footer__logo}>
           <img src={logo} width={89} alt={siteTitle} />
         </div>
-        <a
-          className={cn(s.footer__mail, 'gtm-email-down')}
+        <AnimatedLink
+          className={s.footer__mail}
           href="mailto:hey@etrnode.com"
           target="_blank"
           rel="noreferrer"
         >
           hey@etrnode.com
-        </a>
+        </AnimatedLink>
         <Social variant="footer" gtm="down" />
       </Container>
     </footer>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useLocation, Link } from '@reach/router'
 import { Container, Offcanvas } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import gsap from 'gsap'
@@ -16,7 +17,11 @@ import * as s from './Header.module.scss'
 const Header = ({ siteTitle }) => {
   const { scrollY } = useScroll()
 
-  const isScrolled = scrollY > 160
+  const { pathname } = useLocation()
+
+  const isHome = pathname === '/'
+
+  const isScrolled = scrollY > 160 || !isHome
 
   const handleTop = (e) => {
     e.preventDefault()
@@ -32,10 +37,15 @@ const Header = ({ siteTitle }) => {
   return (
     <header className={cn(s.header, { [s.scroll]: isScrolled })}>
       <Container className={s.inner}>
-        <a href="#top" onClick={handleTop} className={s.logo}>
+        {React.createElement(
+          isHome ? 'a' : Link,
+          isHome
+            ? { href: '#top', onClick: handleTop, className: s.logo }
+            : { to: '/', className: s.logo },
           <img src={logo} width={140} alt={siteTitle} />
-        </a>
-        <Menu variant="header" scroll={isScrolled} />
+        )}
+        {/* <a href="#top"  className={s.logo}></a> */}
+        <Menu variant="header" scroll={isScrolled} isHome={isHome} />
         <Social variant="header" scroll={isScrolled} gtm="up" />
         <div className={s.bg}>
           <div className={s.circles}>

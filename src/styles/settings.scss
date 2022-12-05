@@ -40,7 +40,7 @@ $blue: #0d6efd !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
-$red: #dc3545 !default;
+$red: #f53c13;
 $orange: #fd7e14 !default;
 $yellow: #ffc107 !default;
 $green: #b8ff5e;
@@ -50,21 +50,21 @@ $cyan: #0dcaf0 !default;
 
 // scss-docs-start colors-map
 $colors: (
-  'blue': $blue,
-  'indigo': $indigo,
-  'purple': $purple,
-  'pink': $pink,
+  // 'blue': $blue,
+  // 'indigo': $indigo,
+  // 'purple': $purple,
+  // 'pink': $pink,
   'red': $red,
-  'orange': $orange,
-  'yellow': $yellow,
-  'green': $green,
-  'teal': $teal,
-  'cyan': $cyan,
+  // 'orange': $orange,
+  // 'yellow': $yellow,
+  // 'green': $green,
+  // 'teal': $teal,
+  // 'cyan': $cyan,
   'black': $black,
   'white': $white,
-  'gray': $gray-600,
-  'gray-dark': $gray-800,
-) !default;
+  // 'gray': $gray-600,
+  // 'gray-dark': $gray-800,
+);
 // scss-docs-end colors-map
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
@@ -315,7 +315,7 @@ $theme-colors: (
   // 'success': $success,
   // 'info': $info,
   // 'warning': $warning,
-  // 'danger': $danger,
+  'danger': $danger,
   'light': $white,
   'dark': $black,
 );
@@ -334,7 +334,7 @@ $escaped-characters: (
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-caret: true !default;
+$enable-caret: false;
 $enable-rounded: false;
 $enable-shadows: false !default;
 $enable-gradients: false !default;
@@ -886,28 +886,28 @@ $form-color-width: 3rem !default;
 // scss-docs-end form-input-variables
 
 // scss-docs-start form-check-variables
-$form-check-input-width: 1em !default;
-$form-check-min-height: $font-size-base * $line-height-base !default;
-$form-check-padding-start: $form-check-input-width + 0.5em !default;
-$form-check-margin-bottom: 0.125rem !default;
-$form-check-label-color: null !default;
+$form-check-input-width: 1.25em;
+$form-check-min-height: 0;
+$form-check-padding-start: 0;
+$form-check-margin-bottom: 0;
+$form-check-label-color: null;
 $form-check-label-cursor: null !default;
 $form-check-transition: null !default;
 
 $form-check-input-active-filter: brightness(90%) !default;
 
 $form-check-input-bg: $input-bg !default;
-$form-check-input-border: 1px solid rgba($black, 0.25) !default;
+$form-check-input-border: 2px solid $white;
 $form-check-input-border-radius: 0.25em !default;
 $form-check-radio-border-radius: 50% !default;
 $form-check-input-focus-border: $input-focus-border-color !default;
-$form-check-input-focus-box-shadow: $input-btn-focus-box-shadow !default;
+$form-check-input-focus-box-shadow: none;
 
-$form-check-input-checked-color: $component-active-color !default;
-$form-check-input-checked-bg-color: $component-active-bg !default;
+$form-check-input-checked-color: null;
+$form-check-input-checked-bg-color: null;
 $form-check-input-checked-border-color: $form-check-input-checked-bg-color !default;
-$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>") !default;
-$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+$form-check-input-checked-bg-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='10' height='10' fill='%23B8FF5E'/%3E%3C/svg%3E%0A");
+$form-check-radio-checked-bg-image: null;
 
 $form-check-input-indeterminate-color: $component-active-color !default;
 $form-check-input-indeterminate-bg-color: $component-active-bg !default;
@@ -918,7 +918,7 @@ $form-check-input-disabled-opacity: 0.5 !default;
 $form-check-label-disabled-opacity: $form-check-input-disabled-opacity !default;
 $form-check-btn-check-disabled-opacity: $btn-disabled-opacity !default;
 
-$form-check-inline-margin-end: 1rem !default;
+$form-check-inline-margin-end: 0;
 // scss-docs-end form-check-variables
 
 // scss-docs-start form-switch-variables
@@ -1155,15 +1155,15 @@ $navbar-dark-brand-hover-color: $navbar-dark-active-color !default;
 
 // scss-docs-start dropdown-variables
 $dropdown-min-width: 10rem !default;
-$dropdown-padding-x: 0 !default;
-$dropdown-padding-y: 0.5rem !default;
+$dropdown-padding-x: 30px;
+$dropdown-padding-y: 30px;
 $dropdown-spacer: 0.125rem !default;
 $dropdown-font-size: $font-size-base !default;
 $dropdown-color: $body-color !default;
 $dropdown-bg: $white !default;
 $dropdown-border-color: var(--#{$prefix}border-color-translucent) !default;
 $dropdown-border-radius: $border-radius !default;
-$dropdown-border-width: $border-width !default;
+$dropdown-border-width: 6px;
 $dropdown-inner-border-radius: subtract(
   $dropdown-border-radius,
   $dropdown-border-width
@@ -1194,8 +1194,8 @@ $dropdown-header-padding: $dropdown-header-padding-y $dropdown-header-padding-x 
 
 // scss-docs-start dropdown-dark-variables
 $dropdown-dark-color: $gray-300 !default;
-$dropdown-dark-bg: $gray-800 !default;
-$dropdown-dark-border-color: $dropdown-border-color !default;
+$dropdown-dark-bg: $body-bg;
+$dropdown-dark-border-color: $primary;
 $dropdown-dark-divider-bg: $dropdown-divider-bg !default;
 $dropdown-dark-box-shadow: null !default;
 $dropdown-dark-link-color: $dropdown-dark-color !default;
@@ -1254,8 +1254,8 @@ $pagination-border-radius-lg: $border-radius-lg !default;
 // Placeholders
 
 // scss-docs-start placeholders
-$placeholder-opacity-max: 0.5 !default;
-$placeholder-opacity-min: 0.2 !default;
+$placeholder-opacity-max: 0.4;
+$placeholder-opacity-min: 0.1;
 // scss-docs-end placeholders
 
 // Cards

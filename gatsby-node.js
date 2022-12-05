@@ -21,6 +21,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         '~images': path.resolve(__dirname, 'src/images'),
         '~utils': path.resolve(__dirname, 'src/utils'),
         '~routes': path.resolve(__dirname, 'src/routes.js'),
+        '~api': path.resolve(__dirname, 'src/api.js'),
       },
     },
   })
