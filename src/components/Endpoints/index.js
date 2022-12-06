@@ -191,7 +191,7 @@ const Endpoints = ({ full }) => {
   }, [filters, data])
 
   return (
-    <Container as="section" className={s.endpoints}>
+    <Container id="endpoints" as="section" className={s.endpoints}>
       <h2>Explore Solana public RPC endpoints</h2>
       <h3 className={s.lead}>
         <span>

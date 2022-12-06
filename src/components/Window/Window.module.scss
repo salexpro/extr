@@ -277,6 +277,9 @@
 
   &.map {
     margin-top: 60px;
+    #{$this}__content {
+      padding: 48px 40px 50px;
+    }
   }
 
   &__bar {

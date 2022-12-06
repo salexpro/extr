@@ -1,14 +1,13 @@
 import axios from 'axios'
 import { QueryClient } from '@tanstack/react-query'
 
-console.log(process.env.GATSBY_API_URL)
-
 export const api = axios.create({
   baseURL: `https://${process.env.GATSBY_API_URL}`,
 })
 
 export const API_KEYS = {
   ENDPOINTS: '/endpoints',
+  NODES: '/nodes',
 }
 
 const defaultQueryFn = ({ queryKey }) => {
@@ -25,7 +24,7 @@ export const getEndponts = async ({ queryKey }) => {
 
     return axios({
       method: 'post',
-      url: `http://${item.endpoint}`,
+      url: `//${item.endpoint}`,
       timeout: 5000,
       data: { jsonrpc: '2.0', id: 1, method: 'getHealth' },
     })

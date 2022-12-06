@@ -31,7 +31,7 @@ module.exports = {
           ['~img', './src/assets/img'],
           ['~fonts', './src/assets/fonts'],
           ['~images', './src/images'],
-          ['~utils', './src/utils'],
+          ['~utils', './src/utils.js'],
           ['~routes', './src/routes.js'],
           ['~api', './src/api.js'],
         ],

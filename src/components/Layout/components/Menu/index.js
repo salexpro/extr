@@ -3,19 +3,16 @@ import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 import { Nav } from 'react-bootstrap'
 import cn from 'classnames'
-import gsap from 'gsap'
+
+import { handleScroll } from '~utils'
 
 import MENU from './constants'
 
 import * as s from './Menu.module.scss'
 
 const Menu = ({ variant, scroll, handleClose, isHome }) => {
-  const handleScroll = (e, link) => {
-    e.preventDefault()
-    setTimeout(() => {
-      gsap.to(window, { scrollTo: link, ease: 'power2' })
-    }, handleClose && 300)
-
+  const handleLink = (e, link) => {
+    handleScroll(e, link.substr(1), handleClose && 300)
     if (handleClose) handleClose()
   }
 
@@ -31,7 +28,7 @@ const Menu = ({ variant, scroll, handleClose, isHome }) => {
         <Nav.Item as="li" key={name}>
           <Nav.Link
             {...(isHome
-              ? { href: link, onClick: (e) => handleScroll(e, link) }
+              ? { href: link, onClick: (e) => handleLink(e, link) }
               : {
                   as: Link,
                   to: `/${link}`,

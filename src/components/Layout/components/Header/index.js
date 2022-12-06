@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useLocation, Link } from '@reach/router'
 import { Container, Offcanvas } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import gsap from 'gsap'
 import cn from 'classnames'
 
+import { handleScroll } from '~utils'
 import useScroll from '~hooks/useScroll'
 
 import Icon from '~components/Icon'
@@ -23,11 +23,6 @@ const Header = ({ siteTitle }) => {
 
   const isScrolled = scrollY > 160 || !isHome
 
-  const handleTop = (e) => {
-    e.preventDefault()
-    gsap.to(window, { scrollTo: '#top', ease: 'power2' })
-  }
-
   const [menu, setMenu] = useState(false)
 
   const handleMenu = () => {
@@ -40,7 +35,11 @@ const Header = ({ siteTitle }) => {
         {React.createElement(
           isHome ? 'a' : Link,
           isHome
-            ? { href: '#top', onClick: handleTop, className: s.logo }
+            ? {
+                href: '#top',
+                onClick: (e) => handleScroll(e, 'top'),
+                className: s.logo,
+              }
             : { to: '/', className: s.logo },
           <img src={logo} width={140} alt={siteTitle} />
         )}

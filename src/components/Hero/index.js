@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import cn from 'classnames'
-import gsap from 'gsap'
 import { TypeAnimation } from 'react-type-animation'
+
+import { handleScroll } from '~utils'
 
 import Icon from '../Icon'
 
 import everstake from './img/everstake.svg'
 
-import * as s from './Hero.module.scss'
-
 import PARTNERS from './constants'
+
+import * as s from './Hero.module.scss'
 
 const Hero = () => {
   const [wnd, setWindow] = useState(true)
-
-  const handleBalancer = (e) => {
-    e.preventDefault()
-    gsap.to(window, { scrollTo: '#balancer', ease: 'power2' })
-  }
 
   return (
     <Container id="top" as="section" className={s.hero}>
@@ -34,7 +30,7 @@ const Hero = () => {
         </p>
         <Button
           href="#balancer"
-          onClick={handleBalancer}
+          onClick={(e) => handleScroll(e, 'balancer')}
           className="gtm-get-solana-endpoint-button"
         >
           Get Solana RPC endpoint

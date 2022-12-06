@@ -4,7 +4,7 @@ import SEO from '~components/seo'
 import Hero from '~components/Hero'
 import Balancer from '~components/Balancer'
 import Community from '~components/Community'
-// import Map from '~components/Map'
+import Map from '~components/Map'
 import Endpoints from '~components/Endpoints'
 import Problem from '~components/Problem'
 import Vision from '~components/Vision'
@@ -20,7 +20,7 @@ const IndexPage = () => (
     <Hero />
     <Balancer />
     <Community />
-    {/* <Map /> */}
+    <Map />
     <Endpoints />
     <Problem />
     <Vision />
