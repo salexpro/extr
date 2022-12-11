@@ -40,15 +40,15 @@ const Roadmap = () => {
       <div className={s.container}>
         <div className={s.content}>
           <p>
-            Soon we will release a free public load balancer and extrnode
-            Premium for production use.
+            We are building a battle-tested decentralized RPC gateway to allow
+            developers to connect their dApps to a cluster of public RPC nodes
+            and automatically reroute responses if any node is down.
           </p>
           <p>
-            Our public load balancer will be hosted on Everstake&apos;s
-            infrastructure. Developers will need to send requests to
-            extrnode&apos;s RPC endpoint for the load balancer to reroute them
-            to other RPCs. The premium version will have only nodes run by
-            battle-tested validators to provide clients with higher reliability.
+            Soon, we will release extrnode Premium. It will have only RPC nodes
+            run by battle-tested validators, like Everstake, 01node, Chainflow,
+            Imperator, Chainode Tech, Stakin, Staking Facilities, to provide
+            clients with higher reliability.
           </p>
 
           <div className={s.buttons}>

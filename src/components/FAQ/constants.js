@@ -1,23 +1,8 @@
-import React from 'react'
-
 const DATA = [
   {
-    question: 'What is the extrnode?',
-    answer: (
-      <>
-        <p>
-          extrnode is a battle-tested decentralized RPC gateway powered by
-          Everstake, a responsible validator trusted by 625k users across 70+
-          blockchain networks.
-        </p>
-        <p>
-          We are building a public load balancer to allow developers to connect
-          their dApps to a cluster of public RPC nodes and automatically reroute
-          responses if any node is down. While our public load balancer is still
-          underway, we offer an open-source balancer on Docker.
-        </p>
-      </>
-    ),
+    question: 'What is extrnode?',
+    answer:
+      'extrnode is a battle-tested decentralized RPC gateway powered by Everstake, a responsible validator trusted by 625k users across 70+ blockchain networks.',
   },
   {
     question:
@@ -28,12 +13,12 @@ const DATA = [
   {
     question: 'What are your future plans?',
     answer:
-      "Soon we will release a free public load balancer and extrnode Premium for production use. The public extrnode load balancer will be hosted on Everstake's infrastructure. Developers will need to send requests to extrnode's RPC endpoint for the load balancer to reroute them to other RPCs. The premium version will have only nodes run by battle-tested validators, like 01node, Chainflow, Imperator, Chainode Tech, Stakin, Staking Facilities, to provide clients with higher communication speeds and reliability.",
+      'Soon, we will release extrnode Premium. It will have only RPC nodes run by battle-tested validators, like Everstake, 01node, Chainflow, Imperator, Chainode Tech, Stakin, Staking Facilities, to provide clients with higher communication speeds and reliability.',
   },
   {
-    question: 'How will you protect your public load balancer from outages?',
+    question: 'How do you protect your public load balancer from outages?',
     answer:
-      'The balancer will have the entire fault-tolerant routing set up. And to ensure 99.9% uptime, we will add Everstake’s node to the cluster. If any public node is compromised, you will always be able to use ours, no matter what. At later stages, the solution will be distributed across different validators to ensure proper decentralization and secure it against any accidents.',
+      'The balancer has the entire fault-tolerant routing set up. And to ensure 99.9% uptime, we added RPC nodes hosted by Everstake, 01node, Stakin, and Chainstack to the cluster.',
   },
   {
     question: 'Are you going to have a token?',

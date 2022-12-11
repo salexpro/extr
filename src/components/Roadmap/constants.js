@@ -8,11 +8,13 @@ const ROADMAP = [
     content: 'Open-source load balancer on Solana',
   },
   {
-    content: 'Solana RPC explorer and map',
-  },
-  {
+    status: 'Completed',
     content: 'Public load balancer on Solana',
   },
+  {
+    content: 'Solana RPC explorer and map',
+  },
+
   {
     content: 'extrnode Premium',
   },

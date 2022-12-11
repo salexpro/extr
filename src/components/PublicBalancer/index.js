@@ -13,22 +13,13 @@ const PublicBalancer = () => {
         <span>public</span> load balancer
       </h2>
       <p>
-        RPC nodes in the cluster are hosted by battle-tested validators:
-        Everstake, 01node, Stakin, and Chainstack. It also includes 30+ Solana
-        public RPC endpoints scanned via publicly available Solana’s JSON-RPC.
+        The RPC cluster includes 30+ Solana public RPC endpoints scannable via
+        publicly available Solana’s JSON-RPC. It is also backed by battle-tested
+        RPC nodes hosted by Everstake, 01node, Chainstack, and Stakin.
       </p>
       <div className={s.connect}>
         <h3>Connect now:</h3>
-        <div className={s.connect__link}>
-          <a
-            href="https://solana-mainnet.rpc.extrnode.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://solana-mainnet.rpc.extrnode.com
-          </a>
-          <CopyButton data="https://solana-mainnet.rpc.extrnode.com" />
-        </div>
+        <CopyButton data="https://solana-mainnet.rpc.extrnode.com" />
       </div>
       <p>
         If any node is down, load balancer{' '}

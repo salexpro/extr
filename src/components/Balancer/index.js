@@ -11,8 +11,8 @@ const Balancer = () => {
   return (
     <Container id="balancer" as="section" className={s.balancer}>
       <h2>
-        Connect to a cluster of Solana public <br /> RPC nodes via our{' '}
-        <span>open-source</span> balancer
+        Use our <span>open-source</span> balancer to test <br /> your Solana
+        dApps on mainnet
       </h2>
       <div className={s.steps}>
         {DATA.map(({ title, icon }) => (
@@ -44,8 +44,7 @@ const Balancer = () => {
         <div className={s.footer__warn}>
           We don&apos;t recommend using a balancer for production applications.{' '}
           <br />
-          Use it at your own risk and discretion. Our free public balancer &
-          solution for enterprises are underway.
+          Use it at your own risk and discretion.
         </div>
       </div>
     </Container>

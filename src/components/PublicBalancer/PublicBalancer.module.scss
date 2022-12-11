@@ -62,7 +62,6 @@
   &,
   h3 {
     font-size: 26px;
-    font-weight: 500;
     line-height: 1.4;
     @include b-d(xl) {
       font-size: 22px;
@@ -75,15 +74,6 @@
   h3 {
     @include b-d(md) {
       margin-bottom: 9px;
-    }
-  }
-
-  &__link {
-    display: flex;
-    column-gap: 20px;
-    align-items: end;
-    @include b-d(xl) {
-      column-gap: 15px;
     }
   }
 }

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import cn from 'classnames'
+
 import Icon from '../Icon'
 
 import * as s from './CopyButton.module.scss'
 
-const Copy = ({ data }) => {
+const Copy = ({ data, ...rest }) => {
   const [copied, setCopied] = useState(null)
 
   const handleCopy = (text) => {
@@ -23,20 +25,18 @@ const Copy = ({ data }) => {
     // }
   }
 
-  return (
-    <div className={s.copy}>
-      {!copied ? (
-        <button
-          type="button"
-          className={s.copy__button}
-          onClick={() => handleCopy(data)}
-        >
-          <Icon name="icon-copy" size={34} />
-        </button>
-      ) : (
-        <Icon name="icon-success" size={34} color="white" />
-      )}
-    </div>
+  return React.createElement(
+    !copied ? 'button' : 'div',
+    {
+      type: !copied ? 'button' : null,
+      onClick: !copied ? () => handleCopy(data) : null,
+      className: cn(s.copybutton, { [s.copied]: copied }),
+      ...rest,
+    },
+    <>
+      {data}
+      <Icon name={`icon-${!copied ? 'copy' : 'success'}`} size={34} />
+    </>
   )
 }
 

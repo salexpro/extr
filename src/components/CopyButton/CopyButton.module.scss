@@ -1,18 +1,31 @@
 @import '~styles/mixins';
 
-.copy {
-  &__button {
-    margin-bottom: -5%;
-    color: $primary;
-    transition: color 200ms;
+.copybutton {
+  display: flex;
+  column-gap: 20px;
+  align-items: end;
+  font-weight: 500;
+  color: $primary;
+  text-align: left;
+  text-decoration: underline;
+  transition: color 200ms;
 
-    &:hover {
-      color: $white;
-    }
+  &:not(button) {
+    cursor: default;
+  }
+
+  @include b-d(xl) {
+    column-gap: 15px;
+  }
+
+  &.copied,
+  &:hover {
+    color: $white;
   }
 
   svg {
     @include b-d(xl) {
+      flex: 0 0 26px;
       width: 26px;
       height: 26px;
     }
