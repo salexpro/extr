@@ -1,0 +1,89 @@
+@import '~styles/mixins';
+
+.publicbalancer {
+  padding-top: 150px;
+  padding-bottom: 150px;
+
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    max-width: 980px;
+    margin-bottom: 80px;
+    @include b-d(xl) {
+      margin-bottom: 60px;
+    }
+    @include b-d(md) {
+      margin-bottom: 40px;
+    }
+  }
+
+  p {
+    max-width: 1020px;
+    margin: 0;
+    font-size: 20px;
+
+    @include b-d(xl) {
+      font-size: 18px;
+    }
+
+    @include b-d(md) {
+      font-size: 16px;
+    }
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 0.4em;
+      margin-left: 0.3em;
+      font-weight: 500;
+      color: $primary;
+      background: #393939;
+      @include b-d(md) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.connect {
+  margin: 60px 0;
+
+  @include b-d(md) {
+    margin: 40px 0;
+  }
+
+  &,
+  h3 {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.4;
+    @include b-d(xl) {
+      font-size: 22px;
+    }
+    @include b-d(md) {
+      font-size: 20px;
+    }
+  }
+
+  h3 {
+    @include b-d(md) {
+      margin-bottom: 9px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    column-gap: 20px;
+    align-items: end;
+    @include b-d(xl) {
+      column-gap: 15px;
+    }
+  }
+}

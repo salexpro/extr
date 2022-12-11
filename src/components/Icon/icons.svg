@@ -157,4 +157,12 @@
     <path d="M4 4H2V6H4V4Z" />
     <path d="M2 2H0V4H2V2Z" />
   </symbol>
+  <symbol id="icon-copy" viewBox="0 0 34 34">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M5.66602 2.83337H21.2493V5.66671H8.49935V24.0834H5.66602V2.83337ZM11.3327 8.50004H28.3327V31.1667H11.3327V8.50004ZM14.166 11.3334V28.3334H25.4993V11.3334H14.166Z" />
+  </symbol>
+  <symbol id="icon-success" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M17.0465 7.6709L18.4456 9.1001L9.71768 17.4989L6 14.0179L7.39516 12.5849L9.71359 14.7031L17.0465 7.6709Z" />
+  </symbol>
 </svg>

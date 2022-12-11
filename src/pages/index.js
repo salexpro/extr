@@ -2,6 +2,8 @@ import React from 'react'
 
 import SEO from '~components/seo'
 import Hero from '~components/Hero'
+import PublicBalancer from '~components/PublicBalancer'
+import Community from '~components/Community'
 import Balancer from '~components/Balancer'
 import Community from '~components/Community'
 import Map from '~components/Map'
@@ -18,6 +20,8 @@ export const Head = () => <SEO />
 const IndexPage = () => (
   <>
     <Hero />
+    <PublicBalancer />
+    <Community />
     <Balancer />
     <Community />
     <Map />
