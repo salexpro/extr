@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-const SWITCHER = [
-  {
-    key: 'all',
-    label: 'All Nodes',
-  },
-  {
-    key: 'rpc',
-    label: 'RPC endpoints',
-  },
-]
+// const SWITCHER = [
+//   {
+//     key: 'all',
+//     label: 'All Nodes',
+//   },
+//   {
+//     key: 'rpc',
+//     label: 'RPC endpoints',
+//   },
+// ]
 
 const dict = [
   ['europe', ['cz', 'fr', 'de', 'pl', 'ro', 'si', 'es', 'ch']],
@@ -42,10 +42,6 @@ const LOCATIONS = {
   au: [1012, 473],
 }
 
-const NODE_SIZE = {
-  default: 40,
-  medium: 60,
-  large: 80,
-}
+const REF_SIZE = [1200, 600]
 
-export { SWITCHER, LOCATIONS, GROUPS, NODE_SIZE }
+export { REF_SIZE, LOCATIONS, GROUPS }

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+/* eslint-disable no-param-reassign */
+import React from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
+import produce from 'immer'
 
 import { API_KEYS } from '~api'
 
@@ -9,7 +11,7 @@ import { handleScroll } from '~utils'
 
 import Window from '../Window'
 
-import { SWITCHER, GROUPS, LOCATIONS, NODE_SIZE } from './constants'
+import { GROUPS, LOCATIONS, REF_SIZE } from './constants'
 
 import * as s from './Map.module.scss'
 
@@ -21,25 +23,60 @@ const Map = () => {
     data,
     // refetch,
     // isRefetching,
-  } = useQuery([API_KEYS.NODES, { params: { limit: 5000, format: 'json' } }])
+  } = useQuery([
+    API_KEYS.ENDPOINTS,
+    { params: { limit: 1000, format: 'json' } },
+  ])
 
-  const [type, setType] = useState(SWITCHER[0].key)
+  const {
+    isSuccess: isStatsSuccess,
+    // isLoading,
+    // isError,
+    data: stats,
+    // refetch,
+    // isRefetching,
+  } = useQuery([API_KEYS.STATS, { params: { limit: 1000, format: 'json' } }])
 
-  const handleSwitch = (key) => setType(key)
+  // const [type, setType] = useState(SWITCHER[0].key)
+
+  // const handleSwitch = (key) => setType(key)
 
   const nodes =
     isSuccess &&
-    data
-      .filter(({ kind }) => (type === 'rpc' ? kind === 'rpc' : true))
-      .reduce((acc, item) => {
-        const key = item.asn_info.country.alpha2.toLowerCase()
-        const groupedKey = GROUPS[key] || key
-        acc[groupedKey] = {
-          kind: item.kind,
-          value: (acc[groupedKey]?.value || 0) + 1,
+    data.reduce((acc, item) => {
+      const { name, alpha2 } = item.asn_info.country
+      const key = alpha2.toLowerCase()
+      const groupedKey = GROUPS[key] || key
+
+      return produce(acc, (draft) => {
+        if (draft[groupedKey]) {
+          if (draft[groupedKey].names) {
+            draft[groupedKey].names = produce(
+              draft[groupedKey].names,
+              (drf) => {
+                drf[name] = (draft[groupedKey]?.names?.[name] || 0) + 1
+              }
+            )
+          } else {
+            draft[groupedKey].names = {
+              [name]: 1,
+            }
+          }
+          draft[groupedKey].value = (acc[groupedKey]?.value || 0) + 1
+        } else {
+          draft[groupedKey] = {
+            names: {
+              [name]: 1,
+            },
+            value: 1,
+          }
         }
-        return acc
-      }, {})
+      })
+    }, {})
+
+  // console.log(data)
+  // console.log(nodes)
+  // console.log(stats)
 
   const getNodeSize = (val) => {
     switch (true) {
@@ -60,7 +97,7 @@ const Map = () => {
         variant="map"
       >
         <div className={s.map__topbar}>
-          <div
+          {/* <div
             className={cn('btn', s.switcher, {
               [s.rpc]: type === SWITCHER[1].key,
             })}
@@ -76,59 +113,64 @@ const Map = () => {
               </button>
             ))}
             <span className="btn btn-light btn-sm" />
-          </div>
-          {nodes && (
+          </div> */}
+          {isStatsSuccess && (
             <div className={s.map__info}>
               <div className={cn('btn-sm', s.counter)}>
-                <span>{data?.length}</span>
+                <span>{stats?.alive}</span>
               </div>
               <span className={s.divider} />
               <div className={s.map__stat}>
                 <div className={s.map__stat_item}>
-                  <b>
-                    {isSuccess && data.filter((n) => n.kind === 'rpc').length}
-                  </b>{' '}
-                  RPC nodes
+                  <b>{stats?.rpc}</b> RPC nodes
                 </div>
                 <div className={s.map__stat_item}>
-                  <b>
-                    {isSuccess &&
-                      data.filter((n) => n.kind === 'validator').length}
-                  </b>{' '}
-                  validator nodes
+                  <b>{stats?.validator}</b> validator nodes
                 </div>
               </div>
             </div>
           )}
         </div>
 
-        <div className={s.map__canvas}>
-          <ul className={s.points}>
-            {nodes &&
-              Object.entries(nodes).map(([code, { kind, value }]) => {
-                const size = getNodeSize(value)
-                const coords = LOCATIONS[code].map(
-                  (c) => `${c - NODE_SIZE[size] / 2}px`
-                )
+        <div className={s.map__wrap}>
+          <div className={s.map__canvas}>
+            <ul className={s.points}>
+              {nodes &&
+                Object.entries(nodes).map(([code, { names, value }]) => {
+                  if (LOCATIONS[code]) {
+                    const size = getNodeSize(value)
 
-                return (
-                  <li
-                    className={cn(s.point, [s[size]], {
-                      [s.black]: Math.random() < 0.5,
-                      [s.hide]: type === 'rpc' && kind !== 'rpc',
-                    })}
-                    style={{
-                      // top: LOCATIONS[code][1],
-                      // left: LOCATIONS[code][0],
-                      transform: `translate(${coords.toString()})`,
-                    }}
-                    data-country={code}
-                  >
-                    {value}
-                  </li>
-                )
-              })}
-          </ul>
+                    const coords = LOCATIONS[code].map(
+                      (c, i) => `${(c * 100) / REF_SIZE[i]}%`
+                    )
+
+                    return (
+                      <li
+                        key={code}
+                        className={cn(s.point, [s[size]], {
+                          [s.black]: Math.random() < 0.5,
+                        })}
+                        style={{
+                          top: coords[1],
+                          left: coords[0],
+                        }}
+                        data-country={code}
+                      >
+                        <span>{value}</span>
+                        <ul className={cn('btn', s.tooltip)}>
+                          {Object.entries(names).map(([name, val]) => (
+                            <li key={name}>
+                              <span>{val}</span> {name}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    )
+                  }
+                  return console.warn(`Unspecified location: ${code}`)
+                })}
+            </ul>
+          </div>
         </div>
 
         <div className={s.map__footer}>

@@ -277,8 +277,19 @@
 
   &.map {
     margin-top: 60px;
-    #{$this}__content {
-      padding: 48px 40px 50px;
+    #{$this} {
+      &__bar {
+        @include b-d(md) {
+          display: none;
+        }
+      }
+
+      &__content {
+        padding: 48px 40px 50px;
+        @include b-d(md) {
+          padding: 46px 26px;
+        }
+      }
     }
   }
 

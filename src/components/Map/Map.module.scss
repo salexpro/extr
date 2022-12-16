@@ -4,16 +4,33 @@
 .map {
   padding-top: 150px;
 
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+
+  @include b-d(md) {
+    padding-top: 20px;
+  }
+
   &__topbar {
     display: flex;
     justify-content: space-between;
-    padding-right: 40px;
+    // padding-right: 40px;
   }
 
   &__info {
     display: flex;
     column-gap: 40px;
     align-items: center;
+
+    @include b-d(lg) {
+      column-gap: 20px;
+    }
+
+    @include b-d(md) {
+      column-gap: 15px;
+    }
   }
 
   &__stat {
@@ -23,73 +40,122 @@
     font-weight: 600;
     line-height: 1.2;
 
+    @include b-d(lg) {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
     &_item {
       display: flex;
       column-gap: 12px;
       align-items: baseline;
+      @include b-d(lg) {
+        column-gap: 6px;
+      }
     }
 
     b {
       font-size: 28px;
       font-weight: 500;
       line-height: 1;
+      @include b-d(lg) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__wrap {
+    margin-top: 12px;
+    overflow: auto;
+
+    @include horizontal-scroll;
+
+    @include b-d(xl) {
+      margin: 12px -20px 0;
+    }
+    @include b-d(lg) {
+      padding-right: 12px;
+      padding-left: 12px;
+      margin: 12px -32px 0;
+    }
+    @include b-d(md) {
+      margin: 12px -20px 0;
     }
   }
 
   &__canvas {
     position: relative;
-    height: 600px;
-    margin-top: 12px;
+    // height: 600px;
+    aspect-ratio: 2 / 1;
     background-image: url('./img/map-min.png');
     background-size: cover;
+    @include b-d(lg) {
+      width: 1150px;
+    }
+    @include b-d(md) {
+      width: 1040px;
+    }
   }
 
   &__footer {
     margin-top: -72px;
     text-align: center;
-  }
-}
+    @include b-d(xl) {
+      margin-top: -6px;
+    }
 
-.switcher {
-  position: relative;
-  display: flex;
-  max-width: 288px;
-  padding: 6px;
-  font-size: 14px;
+    @include b-d(md) {
+      margin: -6px -6px 0;
 
-  --pixel: 6px;
-  --bs-btn-bg: #{$black};
-  --bs-btn-hover-bg: #{$black};
-  --bs-btn-active-bg: #{$black};
-  --bs-btn-active-border-color: #{$black};
-
-  &.rpc {
-    :global(.btn-sm) {
-      min-width: 151px;
-      transform: translateX(113px);
+      :global(.btn) {
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+      }
     }
   }
-
-  button {
-    height: 52px;
-    padding: 0 22px;
-    font-weight: 700;
-    color: $white;
-    white-space: nowrap;
-    mix-blend-mode: difference;
-  }
-
-  :global(.btn-sm) {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    z-index: -1;
-    min-width: 113px;
-    pointer-events: none;
-    transition-duration: 300ms;
-    transition-property: min-width, transform;
-  }
 }
+
+// .switcher {
+//   position: relative;
+//   display: flex;
+//   max-width: 288px;
+//   padding: 6px;
+//   font-size: 14px;
+
+//   --pixel: 6px;
+//   --bs-btn-bg: #{$black};
+//   --bs-btn-hover-bg: #{$black};
+//   --bs-btn-active-bg: #{$black};
+//   --bs-btn-active-border-color: #{$black};
+
+//   &.rpc {
+//     :global(.btn-sm) {
+//       min-width: 151px;
+//       transform: translateX(113px);
+//     }
+//   }
+
+//   button {
+//     height: 52px;
+//     padding: 0 22px;
+//     font-weight: 700;
+//     color: $white;
+//     white-space: nowrap;
+//     mix-blend-mode: difference;
+//   }
+
+//   :global(.btn-sm) {
+//     position: absolute;
+//     top: 6px;
+//     left: 6px;
+//     z-index: -1;
+//     min-width: 113px;
+//     pointer-events: none;
+//     transition-duration: 300ms;
+//     transition-property: min-width, transform;
+//   }
+// }
 
 .counter {
   height: auto;
@@ -102,6 +168,11 @@
   letter-spacing: 0.2em;
   background: $black;
 
+  @include b-d(lg) {
+    min-height: 62px;
+    font-size: 26px;
+  }
+
   span {
     margin-right: -0.2em;
   }
@@ -110,6 +181,10 @@
 .divider {
   height: calc(100% + 4px);
   border-left: 3px solid;
+  @include b-d(lg) {
+    height: 100%;
+    border-left-width: 2px;
+  }
 }
 
 .points {
@@ -127,12 +202,23 @@
   height: 40px;
   font-size: 16px;
   font-weight: 500;
+  cursor: default;
   background: $primary;
   border-radius: 50%;
   // transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-duration: 300ms;
-  // transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   transform-origin: center;
+
+  &:hover {
+    z-index: 2;
+
+    .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
   @for $i from 0 through 15 {
     &:nth-child(#{$i + 1}) {
@@ -146,8 +232,10 @@
   }
 
   &.medium {
-    width: 60px;
-    height: 60px;
+    --size: 60px;
+
+    width: var(--size);
+    height: var(--size);
     font-size: 18px;
   }
 
@@ -157,8 +245,59 @@
     font-size: 22px;
   }
 
-  &.hide {
-    visibility: hidden;
-    opacity: 0;
+  // &.hide {
+  //   visibility: hidden;
+  //   opacity: 0;
+  // }
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.tooltip {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  display: grid;
+  row-gap: 10px;
+  // min-height: 64px;
+  padding: 4px 14px;
+  font-size: inherit;
+  font-weight: 400;
+  color: $white;
+  text-align: left;
+  white-space: nowrap;
+  cursor: default;
+  visibility: hidden;
+  background: $black;
+  opacity: 0;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: 350ms;
+  transition-property: opacity, visibility, transform;
+  transform: translateX(-5px);
+
+  --pixel: 6px;
+  --bs-btn-bg: #{$black};
+  --bs-btn-hover-bg: #{$black};
+  --bs-btn-hover-color: #{$white};
+  --bs-btn-active-bg: #{$black};
+  --bs-btn-active-border-color: #{$black};
+  --bs-btn-active-color: #{$white};
+
+  li {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+  }
+
+  span {
+    display: flex;
+    flex: 0 0 var(--size, 40px);
+    align-items: center;
+    justify-content: center;
+    width: var(--size, 40px);
+    height: var(--size, 40px);
+    font-weight: 500;
+    color: $black;
+    background: $primary;
+    border-radius: 50%;
   }
 }

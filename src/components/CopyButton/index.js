@@ -5,7 +5,7 @@ import Icon from '../Icon'
 
 import * as s from './CopyButton.module.scss'
 
-const Copy = ({ data, ...rest }) => {
+const Copy = ({ data, variant, ...rest }) => {
   const [copied, setCopied] = useState(null)
 
   const handleCopy = (text) => {
@@ -30,7 +30,10 @@ const Copy = ({ data, ...rest }) => {
     {
       type: !copied ? 'button' : null,
       onClick: !copied ? () => handleCopy(data) : null,
-      className: cn(s.copybutton, { [s.copied]: copied }),
+      className: cn(s.copybutton, {
+        [s[variant]]: variant,
+        [s.copied]: copied,
+      }),
       ...rest,
     },
     <>

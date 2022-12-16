@@ -138,18 +138,6 @@
     <path fill-rule="evenodd" clip-rule="evenodd"
       d="M10.8307 2.16675H15.1641H17.3307V4.33342L17.3307 6.50008H19.4974H21.6641H23.8307V8.66675H21.6641L21.6641 21.6667V23.8334L19.4974 23.8334H6.4974L4.33073 23.8334V21.6667V8.66675H2.16406V6.50008H4.33073H6.4974H8.66406V4.33342V2.16675H10.8307ZM17.3307 8.66675H15.1641H10.8307H8.66406H6.4974V21.6667H19.4974V8.66675H17.3307ZM15.1641 6.50008V4.33342H10.8307V6.50008H15.1641ZM11.9141 10.8334V19.5001H9.7474V10.8334H11.9141ZM16.2474 10.8334H14.0807V19.5001H16.2474V10.8334Z" />
   </symbol>
-  <symbol id="icon-copy" viewBox="0 0 30 30">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M5 2.5H18.75V5H7.5V21.25H5V2.5ZM10 7.5H25V27.5H10V7.5ZM12.5 10V25H22.5V10H12.5Z" />
-  </symbol>
-  <symbol id="icon-success" viewBox="0 0 24 24">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0Z"
-      fill="#B8FF5E" />
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M17.0465 7.67114L18.4456 9.10034L9.71768 17.4992L6 14.0182L7.39516 12.5852L9.71359 14.7034L17.0465 7.67114Z"
-      fill="black" />
-  </symbol>
   <symbol id="icon-sort-arrow" viewBox="0 0 10 8">
     <path d="M6 0H4V8H6V0Z" />
     <path d="M8 4H6V6H8V4Z" />
@@ -164,5 +152,13 @@
   <symbol id="icon-success" viewBox="0 0 24 24">
     <path fill-rule="evenodd" clip-rule="evenodd"
       d="M17.0465 7.6709L18.4456 9.1001L9.71768 17.4989L6 14.0179L7.39516 12.5849L9.71359 14.7031L17.0465 7.6709Z" />
+  </symbol>
+  <symbol id="icon-success_round" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0Z"
+      fill="#B8FF5E" />
+    <path fill-rule="evenodd" clip-rule="evenodd"
+      d="M17.0465 7.67114L18.4456 9.10034L9.71768 17.4992L6 14.0182L7.39516 12.5852L9.71359 14.7034L17.0465 7.67114Z"
+      fill="black" />
   </symbol>
 </svg>
