@@ -6,61 +6,60 @@ export const api = axios.create({
 })
 
 export const API_KEYS = {
-  // ENDPOINTS: '/endpoints',
   ENDPOINTS: '/api/v1/endpoints',
   STATS: '/api/v1/stats',
 }
 
 const defaultQueryFn = ({ queryKey }) => {
-  const [endpoint, { params }] = queryKey
+  const [endpoint, params] = queryKey
 
-  return api.get(endpoint, { params }).then((res) => res.data)
+  return api.get(endpoint, params).then((res) => res.data)
 }
 
-export const getEndponts = async ({ queryKey }) => {
-  const [, endpoints] = queryKey
+// export const getEndponts = async ({ queryKey }) => {
+//   const [, endpoints] = queryKey
 
-  const pingEndpoints = endpoints.map((item) => {
-    const ping = new Date()
+//   const pingEndpoints = endpoints.map((item) => {
+//     const ping = new Date()
 
-    return axios({
-      method: 'post',
-      url: `//${item.endpoint}`,
-      timeout: 5000,
-      data: { jsonrpc: '2.0', id: 1, method: 'getHealth' },
-    })
-      .then(() => {
-        const pong = new Date() - ping
+//     return axios({
+//       method: 'post',
+//       url: `//${item.endpoint}`,
+//       timeout: 5000,
+//       data: { jsonrpc: '2.0', id: 1, method: 'getHealth' },
+//     })
+//       .then(() => {
+//         const pong = new Date() - ping
 
-        return {
-          ...item,
-          response: {
-            status: true,
-            time: pong,
-          },
-        }
-      })
-      .catch((error) => {
-        // handle error
-        const pong = new Date() - ping
+//         return {
+//           ...item,
+//           response: {
+//             status: true,
+//             time: pong,
+//           },
+//         }
+//       })
+//       .catch((error) => {
+//         // handle error
+//         const pong = new Date() - ping
 
-        if (!['ERR_NETWORK', 'ECONNABORTED'].includes(error.code)) {
-          return {
-            ...item,
-            response: { status: true, time: pong },
-          }
-        }
-        return {
-          ...item,
-          response: { status: false, time: 10000 }, // fake value to sort down the list later
-        }
-      })
-  })
+//         if (!['ERR_NETWORK', 'ECONNABORTED'].includes(error.code)) {
+//           return {
+//             ...item,
+//             response: { status: true, time: pong },
+//           }
+//         }
+//         return {
+//           ...item,
+//           response: { status: false, time: 10000 }, // fake value to sort down the list later
+//         }
+//       })
+//   })
 
-  const pingedEndpoints = await Promise.all(pingEndpoints)
+//   const pingedEndpoints = await Promise.all(pingEndpoints)
 
-  return pingedEndpoints
-}
+//   return pingedEndpoints
+// }
 
 // api.interceptors.request.use((config) => {
 //   const token = localStorage.getItem('token')
@@ -92,6 +91,6 @@ export const queryClient = new QueryClient({
   },
 })
 
-export const queries = {
-  // getUser: () => api.get(API_KEYS.USER).then((res) => res.data?.data),
-}
+// export const queries = {
+//   // getUser: () => api.get(API_KEYS.USER).then((res) => res.data?.data),
+// }

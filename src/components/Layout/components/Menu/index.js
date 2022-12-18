@@ -27,7 +27,7 @@ const Menu = ({ variant, scroll, handleClose, isHome }) => {
       {MENU.map(({ name, link, className }) => (
         <Nav.Item as="li" key={name}>
           <Nav.Link
-            {...(isHome
+            {...(isHome && link.includes('#')
               ? { href: link, onClick: (e) => handleLink(e, link) }
               : {
                   as: Link,

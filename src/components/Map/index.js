@@ -35,7 +35,7 @@ const Map = () => {
     data: stats,
     // refetch,
     // isRefetching,
-  } = useQuery([API_KEYS.STATS, { params: { limit: 1000, format: 'json' } }])
+  } = useQuery([API_KEYS.STATS])
 
   // const [type, setType] = useState(SWITCHER[0].key)
 
@@ -90,7 +90,7 @@ const Map = () => {
   }
 
   return (
-    <Container as="section" className={s.map}>
+    <Container id="map" as="section" className={s.map}>
       <h2>Map of Solana nodes and public RPC endpoints</h2>
       <Window
         title="Map of Solana nodes and public RPC endpoints"

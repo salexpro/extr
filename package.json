@@ -80,8 +80,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "copy-bs-settings": "node ./scripts/copy-bs-settings.js",
-    "prepare": "husky install && yarn copy-bs-settings",
+    "prepare": "husky install",
     "cz": "cz"
   },
   "repository": {

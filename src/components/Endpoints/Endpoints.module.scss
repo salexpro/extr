@@ -13,61 +13,6 @@
   }
 }
 
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 60px;
-  margin-bottom: 40px;
-}
-
-.filters {
-  display: flex;
-  column-gap: 20px;
-}
-
-.actions {
-  display: flex;
-  column-gap: 50px;
-}
-
-.actionButton {
-  display: flex;
-  column-gap: 15px;
-  font-weight: 500;
-  color: $white;
-  transition: color 300ms;
-
-  &:hover {
-    color: $primary;
-  }
-
-  svg {
-    color: $primary;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-
-    &,
-    svg {
-      color: #929292;
-    }
-  }
-
-  &.fetching {
-    cursor: progress;
-  }
-}
-
-.copyButton {
-  transition: color 250ms;
-
-  &:hover {
-    color: darken($primary, 25);
-  }
-}
-
 .footer {
   display: grid;
   align-items: center;

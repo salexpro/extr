@@ -1,34 +1,37 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react'
-import cn from 'classnames'
 import { Link } from 'gatsby'
-import { Container, Form, Table, Dropdown, Placeholder } from 'react-bootstrap'
+import { Container, Placeholder } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
 import produce from 'immer'
 
-import { API_KEYS, getEndponts } from '~api'
+import { API_KEYS } from '~api'
 
-import Icon from '../Icon'
 import AnimatedLink from '../AnimatedLink'
+import TopBar from './components/TopBar'
+import Table from './components/Table'
 
-import Row from './Row'
-import RowPlaceholder from './Placeholder'
+import {
+  isAnyFilterActive,
+  isFilterActive,
+  buildFilter,
+  avgTime,
+} from './utils'
 
-import { sanitize } from './utils'
-
-import { TYPES, FILTERS, TABLE, SESSION_STORAGE_KEY } from './constants'
+import { TYPES, FILTERS, SESSION_STORAGE_KEY } from './constants'
 
 import * as s from './Endpoints.module.scss'
 
 const Endpoints = ({ full }) => {
-  const VIEWABLE = full ? 1000 : 10
+  const itemsLimit = full ? 1000 : 10
 
   const {
     isSuccess,
     isLoading,
     // isError,
-    data: endpoints,
+    data,
     refetch,
     isRefetching,
   } = useQuery([
@@ -36,17 +39,6 @@ const Endpoints = ({ full }) => {
     { params: { limit: 1000, format: 'json' } },
   ])
 
-  const { isSuccess: isPingSuccess, data: pingedEndpoints } = useQuery({
-    queryKey: ['ping', endpoints],
-    queryFn: getEndponts,
-    enabled: !!endpoints,
-  })
-
-  // const sessionFilters =
-  //   typeof window !== 'undefined' &&
-  //   JSON.parse(sessionStorage.getItem(SESSION_STORAGE_KEY))
-
-  const [data, setData] = useState(null)
   const [filteredData, setFilteredData] = useState(null)
   const [filters, setFilters] = useState(FILTERS)
   const [sortType, setSort] = useState(true)
@@ -86,18 +78,7 @@ const Endpoints = ({ full }) => {
     refetch()
   }
 
-  const isAnyFilterActive = () =>
-    Object.values(filters).some(
-      (f) => f.data && Object.values(f.data).some((v) => v)
-    )
-
-  const buildFilter = (source, fetchedData) =>
-    produce(source, (draft) => {
-      fetchedData.forEach((el) => {
-        draft.data[el] = draft?.data?.[el] || false
-      })
-    })
-
+  // Get previous filters from sessionStorage
   useEffect(() => {
     const sessionFilters = JSON.parse(
       sessionStorage.getItem(SESSION_STORAGE_KEY)
@@ -113,31 +94,18 @@ const Endpoints = ({ full }) => {
   // Set data/pinged data & build filters
   useEffect(() => {
     if (isSuccess) {
-      if (isPingSuccess) {
-        setData(
-          [...pingedEndpoints].sort(
-            ({ response: { time: a } }, { response: { time: b } }) =>
-              sortType ? a - b : b - a
-          )
-        )
-      } else {
-        setData(endpoints)
-      }
-
-      const buildFilters = endpoints.reduce(
+      const buildFilters = data.reduce(
         (acc, item) => {
-          acc.supported_methods = buildFilter(
-            acc.supported_methods,
-            item?.supported_methods
+          acc.methods = buildFilter(
+            acc.methods,
+            item?.supported_methods.map(({ name }) => name)
           )
 
           acc.country = buildFilter(acc.country, [
             item?.asn_info?.country?.name,
           ])
 
-          const isp = item?.asn_info?.isp
-
-          acc.isp = buildFilter(acc.isp, [isp && sanitize(isp)])
+          acc.provider = buildFilter(acc.provider, [item?.asn_info?.isp])
 
           acc.version = buildFilter(acc.version, [item?.version])
 
@@ -148,47 +116,74 @@ const Endpoints = ({ full }) => {
 
       setFilters(buildFilters)
     }
-  }, [isSuccess, isPingSuccess, pingedEndpoints, endpoints, sortType])
+  }, [isSuccess])
 
-  // Filtering fetched and pinged data
+  // Filtering & sorting data
   useEffect(() => {
     sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(filters))
 
     if (data) {
-      if (isAnyFilterActive()) {
-        setFilteredData(
-          data.filter((item) => {
-            const isType =
-              Object.values(filters.node_type.data).every((v) => !v) ||
-              filters.node_type.data[TYPES[item.node_type]]
+      let dataWithResponse
 
-            // This filter works as an AND (default is OR)
-            const isMethod =
-              Object.values(filters.supported_methods.data).every((v) => !v) ||
-              Object.entries(filters.supported_methods.data)
-                .filter(([, m]) => m)
-                .every(([key]) => item.supported_methods.includes(key))
+      if (isAnyFilterActive(filters)) {
+        const { type, methods, country, provider, version } = filters
 
-            const isCountry =
-              Object.values(filters.country.data).every((v) => !v) ||
-              filters.country.data[item.asn_info.country.name]
+        dataWithResponse = data.filter((item) => {
+          const isType =
+            !isFilterActive(type) ||
+            (item.is_rpc && type.data[TYPES.rpc]) ||
+            (item.is_validator
+              ? type.data[TYPES.validator]
+              : !item.is_rpc && type.data[TYPES.limited])
 
-            const isProvider =
-              Object.values(filters.isp.data).every((v) => !v) ||
-              filters.isp.data[sanitize(item.asn_info.isp)]
+          const itemMethods = item.supported_methods.map(({ name }) => name)
+          // This filter works as an AND (default is OR)
+          const isMethod =
+            !isFilterActive(methods) ||
+            Object.entries(methods.data)
+              .filter(([, m]) => m)
+              .every(([key]) => itemMethods.includes(key))
 
-            const isVersion =
-              Object.values(filters.version.data).every((v) => !v) ||
-              filters.version.data[item.version]
+          const isCountry =
+            !isFilterActive(country) || country.data[item.asn_info.country.name]
 
-            return isType && isMethod && isCountry && isProvider && isVersion
-          })
-        )
+          const isProvider =
+            !isFilterActive(provider) || provider.data[item.asn_info.isp]
+
+          const isVersion =
+            !isFilterActive(version) || version.data[item.version]
+
+          return isType && isMethod && isCountry && isProvider && isVersion
+        })
+
+        dataWithResponse = dataWithResponse.map((item) => {
+          const filteredMethods = isFilterActive(methods)
+            ? item.supported_methods.filter(({ name }) => methods.data[name])
+            : item.supported_methods
+
+          console.log(filters.supported_methods)
+
+          return {
+            ...item,
+            response: avgTime(filteredMethods),
+          }
+        })
       } else {
-        setFilteredData(data)
+        dataWithResponse = data.map((item) => ({
+          ...item,
+          response: item.supported_methods.find(
+            ({ name }) => name === 'getBalance'
+          )?.response_time,
+        }))
       }
+
+      setFilteredData(
+        dataWithResponse.sort(({ response: a }, { response: b }) =>
+          sortType ? a - b : b - a
+        )
+      )
     }
-  }, [filters, data])
+  }, [filters, data, sortType])
 
   return (
     <Container id="endpoints" as="section" className={s.endpoints}>
@@ -211,160 +206,35 @@ const Endpoints = ({ full }) => {
         </span>{' '}
         endpoints found
       </h3>
-      <div className={s.topbar}>
-        <div className={s.filters}>
-          {Object.entries(filters).map(([key, { label, data: fData }]) => {
-            const filterValues = fData && Object.values(fData)
 
-            const isPrimary = filterValues.some((v) => v)
+      <TopBar
+        {...{
+          filters,
+          isLoading,
+          handleFilter,
+          handleResetFilter,
+          handleRefresh,
+          isRefetching,
+        }}
+      />
 
-            return (
-              <Dropdown
-                key={key}
-                autoClose="outside"
-                // align={
-                // i === Object.keys(FILTERS).length - 1 ? 'end' : 'start'
-                // }
-              >
-                <Dropdown.Toggle
-                  variant={cn({
-                    'outline-primary': isPrimary,
-                    'outline-light': !isPrimary,
-                  })}
-                  size="sm"
-                  disabled={!data}
-                >
-                  {label}
-                </Dropdown.Toggle>
-                {fData && (
-                  <Dropdown.Menu
-                    variant="dark"
-                    popperConfig={{
-                      modifiers: [
-                        { name: 'offset', options: { offset: [0, 10] } },
-                      ],
-                    }}
-                    flip={false}
-                  >
-                    <div
-                      className={cn('dropdown-items', {
-                        'dropdown-items--horizontal': filterValues.length > 10, // overflow of max height
-                        [`dropdown-items--${label.toLowerCase()}`]: label,
-                      })}
-                    >
-                      <Form.Check
-                        type="checkbox"
-                        id={`filter-${label}-all`}
-                        label="All"
-                        checked={filterValues.every((v) => !v)}
-                        onChange={() => handleResetFilter(key)}
-                      />
-                      {Object.entries(fData)
-                        .sort()
-                        .map(([name, val]) => (
-                          <Form.Check
-                            key={name}
-                            type="checkbox"
-                            id={`filter-${label}-${name}`}
-                            label={name}
-                            checked={val}
-                            onChange={() => handleFilter(key, name)}
-                          />
-                        ))}
-                    </div>
-                  </Dropdown.Menu>
-                )}
-              </Dropdown>
-            )
-          })}
-        </div>
-        <div className={s.actions}>
-          <button
-            type="button"
-            onClick={handleRefresh}
-            className={cn(s.actionButton, { [s.fetching]: isRefetching })}
-            disabled={isLoading || isRefetching}
-          >
-            <Icon name="icon-reload" size={26} />
-            Refresh results
-          </button>
-          <button
-            type="button"
-            className={s.actionButton}
-            onClick={() => handleResetFilter()}
-            disabled={!isAnyFilterActive()}
-          >
-            <Icon name="icon-trash" size={26} />
-            Clear filters
-          </button>
-        </div>
-      </div>
+      <Table
+        {...{
+          sortType,
+          handleSort,
+          isLoading,
+          filteredData,
+          handleResetFilter,
+          itemsLimit,
+        }}
+      />
 
-      <Table className="table--endpoints" responsive>
-        <thead>
-          <tr>
-            {TABLE.map((label, i) => {
-              const isLast = TABLE.length - 1 === i
-              return (
-                <th className={cn({ table__response: isLast })}>
-                  {label}
-                  {isLast && (
-                    <button
-                      type="button"
-                      className={cn('table__sortButton', {
-                        sortAsc: sortType,
-                        sortDesc: !sortType,
-                      })}
-                      onClick={handleSort}
-                      disabled={!data}
-                    >
-                      {[...Array(2)].map((_, j) => (
-                        <Icon
-                          key={`icon${j}`}
-                          name="icon-sort-arrow"
-                          size={[10, 8]}
-                        />
-                      ))}
-                    </button>
-                  )}
-                </th>
-              )
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData &&
-            (!filteredData.length ? (
-              <tr>
-                <td colSpan={7} className="table__empty">
-                  <span className="h2">No endpoints found</span>
-                  <p>
-                    Please <b>modify</b> or{' '}
-                    <button
-                      type="button"
-                      className="table__link"
-                      onClick={() => handleResetFilter()}
-                    >
-                      clear filters
-                    </button>
-                  </p>
-                </td>
-              </tr>
-            ) : (
-              filteredData
-                .slice(0, VIEWABLE)
-                .map((item) => <Row key={item.endpoint} {...item} />)
-            ))}
-          {isLoading &&
-            [...Array(10)].map((_, i) => <RowPlaceholder key={`pl${i}`} />)}
-        </tbody>
-      </Table>
       {!full && filteredData && !!filteredData.length && (
         <div className={s.footer}>
           <AnimatedLink as={Link} to="/endpoints" className={s.footer__link}>
             Show more endpoints{' '}
-            {filteredData.length > VIEWABLE &&
-              `(${filteredData.length - VIEWABLE})`}
+            {filteredData.length > itemsLimit &&
+              `(${filteredData.length - itemsLimit})`}
           </AnimatedLink>
         </div>
       )}

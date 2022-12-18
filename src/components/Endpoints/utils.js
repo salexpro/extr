@@ -1,5 +1,21 @@
-/* eslint-disable import/prefer-default-export */
-// export const flip = (obj) =>
-//   Object.fromEntries(Object.entries(obj).map((a) => a.reverse()))
+import produce from 'immer'
 
-// export const sanitize = (data) => data.substr(1, data.indexOf(', ') - 1)
+// eslint-disable-next-line import/prefer-default-export
+
+export const isFilterActive = (filter) =>
+  Object.values(filter.data).some((v) => v)
+
+export const isAnyFilterActive = (filters) =>
+  Object.values(filters).some((f) => f.data && isFilterActive(f))
+
+export const buildFilter = (source, fetchedData) =>
+  produce(source, (draft) => {
+    fetchedData.forEach((el) => {
+      // eslint-disable-next-line no-param-reassign
+      draft.data[el] = draft?.data?.[el] || false
+    })
+  })
+
+export const avgTime = (arr) =>
+  // eslint-disable-next-line camelcase
+  arr.reduce((acc, { response_time }) => acc + response_time, 0) / arr.length

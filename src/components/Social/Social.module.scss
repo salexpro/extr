@@ -79,10 +79,18 @@
   }
 
   &.scroll {
-    @include b-up(xl) {
+    @include b-up(xxl) {
       row-gap: 106px;
-      transition-delay: 50ms;
       transform: translate(-155px, -156px) rotate(-90deg);
+    }
+
+    @include b-o(xl) {
+      row-gap: 90px;
+      transform: translate(-140px, -140px) rotate(-90deg);
+    }
+
+    @include b-up(xl) {
+      transition-delay: 50ms;
 
       li {
         transition-delay: 50ms;

@@ -6,7 +6,7 @@ import PublicBalancer from '~components/PublicBalancer'
 import Community from '~components/Community'
 import Balancer from '~components/Balancer'
 import Map from '~components/Map'
-// import Endpoints from '~components/Endpoints'
+import Endpoints from '~components/Endpoints'
 import Problem from '~components/Problem'
 import Vision from '~components/Vision'
 import Roadmap from '~components/Roadmap'
@@ -24,7 +24,7 @@ const IndexPage = () => (
     <Balancer />
     <Community />
     <Map />
-    {/* <Endpoints /> */}
+    <Endpoints />
     <Problem />
     <Vision />
     <Roadmap />

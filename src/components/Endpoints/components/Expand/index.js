@@ -17,7 +17,14 @@ const More = ({ data }) => {
 
   return (
     <div className="table__more">
-      {list.map((el) => el.replace('For', '\u00ADFor')).join(', ')}
+      {list
+        .map(({ name }) =>
+          name
+            .replace('For', '\u00ADFor')
+            .replace('getRecent', 'getRecent\u00AD')
+        )
+
+        .join(', ')}
       {data.length > SHORT_NUMBER && (
         <button type="button" className="table__link" onClick={handleShow}>
           {BUTTON[+show]}

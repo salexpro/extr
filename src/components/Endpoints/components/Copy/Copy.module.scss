@@ -1,0 +1,9 @@
+@import '~styles/mixins';
+
+.copyButton {
+  transition: color 250ms;
+
+  &:hover {
+    color: darken($primary, 25);
+  }
+}

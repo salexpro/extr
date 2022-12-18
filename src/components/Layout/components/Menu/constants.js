@@ -5,12 +5,12 @@ const MENU = [
     className: 'gtm-load-balancer-button',
   },
   {
-    name: 'Problem',
-    link: '#problem',
+    name: 'RPC map',
+    link: '#map',
   },
   {
-    name: 'Vision',
-    link: '#vision',
+    name: 'RPC Explorer',
+    link: 'endpoints',
   },
   {
     name: 'Roadmap',

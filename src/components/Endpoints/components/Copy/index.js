@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Icon from '../Icon'
+import Icon from '../../../Icon'
 
-import { copyButton } from './Endpoints.module.scss'
+import { copyButton } from './Copy.module.scss'
 
 const Copy = ({ children, ...rest }) => {
   // yeah yeah I know it's the same code here as in CopyButton component (⩾﹏⩽)
