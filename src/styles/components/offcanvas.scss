@@ -6,6 +6,19 @@
   }
 }
 
+.offcanvas {
+  &--filters {
+    --bs-offcanvas-bg: rgba(37, 37, 37, 98%);
+    --bs-offcanvas-width: 355px;
+    @include b-up(lg) {
+      display: none;
+    }
+    @include b-d(md) {
+      --bs-offcanvas-width: 100%;
+    }
+  }
+}
+
 .offcanvas-body {
   display: grid;
   row-gap: 60px;

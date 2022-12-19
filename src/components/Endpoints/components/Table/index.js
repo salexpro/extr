@@ -22,8 +22,8 @@ const Table = ({
       <tbody>
         {filteredData &&
           (!filteredData.length ? (
-            <tr>
-              <td colSpan={7} className="table__empty">
+            <tr className="table__empty">
+              <td colSpan={7}>
                 <span className="h2">No endpoints found</span>
                 <p>
                   Please <b>modify</b> or{' '}

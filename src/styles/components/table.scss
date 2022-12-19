@@ -99,7 +99,9 @@
 
   tr {
     @include b-d(lg) {
-      display: none;
+      &:not(.table__empty) {
+        display: none;
+      }
     }
 
     ~ tr td {
@@ -282,26 +284,33 @@
   }
 
   &__empty {
-    text-align: center;
-
-    &[colspan] {
-      padding: 90px 20px;
+    @include b-d(lg) {
+      display: grid;
+      background: $white;
     }
 
-    // .h2 {
-    //   display: block;
-    // }
+    td {
+      text-align: center;
 
-    p {
-      margin: 20px 0 0;
-    }
+      &[colspan] {
+        padding: 90px 20px;
+      }
 
-    b {
-      font-weight: 600;
-    }
+      // .h2 {
+      //   display: block;
+      // }
 
-    button {
-      display: inline-block;
+      p {
+        margin: 20px 0 0;
+      }
+
+      b {
+        font-weight: 600;
+      }
+
+      button {
+        display: inline-block;
+      }
     }
   }
 

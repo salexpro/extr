@@ -3,7 +3,7 @@ import Icon from '../../../Icon'
 
 import { copyButton } from './Copy.module.scss'
 
-const Copy = ({ children, ...rest }) => {
+const Copy = ({ children, as, ...rest }) => {
   // yeah yeah I know it's the same code here as in CopyButton component (⩾﹏⩽)
   // it's 2am day before deadline fuck that
   const [copied, setCopied] = useState(null)
@@ -29,13 +29,15 @@ const Copy = ({ children, ...rest }) => {
     <div {...rest}>
       <span>{!copied ? children : 'Copied'}</span>
       {!copied ? (
-        <button
-          type="button"
-          className={copyButton}
-          onClick={() => handleCopy(children.toString())}
-        >
+        React.createElement(
+          as || 'button',
+          {
+            type: 'button',
+            className: copyButton,
+            onClick: () => handleCopy(children.toString()),
+          },
           <Icon name="icon-copy" />
-        </button>
+        )
       ) : (
         <Icon name="icon-success_round" />
       )}

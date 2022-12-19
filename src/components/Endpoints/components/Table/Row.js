@@ -66,7 +66,9 @@ const Row = (props) => {
           aria-expanded={open}
           className="table__item-button"
         >
-          <Copy className="table__ip available">{endpoint}</Copy>
+          <Copy as="div" className="table__ip available">
+            {endpoint}
+          </Copy>
           {formattedResponse}
         </button>
         <Collapse in={open}>
@@ -80,9 +82,9 @@ const Row = (props) => {
                     overlay={
                       <Tooltip>
                         {Object.entries(TYPES).map(([k, t]) => (
-                          <>
+                          <React.Fragment key={k}>
                             <b>{t}</b>: {TYPES_DESCR[k]} <br />
-                          </>
+                          </React.Fragment>
                         ))}
                       </Tooltip>
                     }

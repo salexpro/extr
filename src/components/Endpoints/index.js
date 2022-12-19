@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/no-array-index-key */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import { Container, Placeholder } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
@@ -78,8 +78,34 @@ const Endpoints = ({ full }) => {
     refetch()
   }
 
+  const sectionRef = useRef(null)
+
+  const [isScroll, setScroll] = useState(null)
+
+  const handleScroll = () => {
+    const sectionCoords = sectionRef.current.getBoundingClientRect()
+
+    // console.log(sectionCoords.top, sectionCoords.height)
+    // console.log(
+    //   window.outerHeight > sectionCoords.top + 200,
+    //   window.outerHeight < sectionCoords.bottom + 200
+    // )
+
+    if (
+      window.outerHeight > sectionCoords.top + 200 &&
+      window.outerHeight < sectionCoords.bottom + 200
+    ) {
+      setScroll(true)
+    } else {
+      setScroll(false)
+    }
+    // sectionRef.current.
+  }
+
   // Get previous filters from sessionStorage
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
     const sessionFilters = JSON.parse(
       sessionStorage.getItem(SESSION_STORAGE_KEY)
     )
@@ -88,6 +114,9 @@ const Endpoints = ({ full }) => {
       setTimeout(() => {
         setFilters(sessionFilters)
       }, 0)
+    }
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
@@ -186,7 +215,12 @@ const Endpoints = ({ full }) => {
   }, [filters, data, sortType])
 
   return (
-    <Container id="endpoints" as="section" className={s.endpoints}>
+    <Container
+      ref={sectionRef}
+      id="endpoints"
+      as="section"
+      className={s.endpoints}
+    >
       <h2>Explore Solana public RPC endpoints</h2>
       <h3 className={s.lead}>
         <span>
@@ -215,6 +249,7 @@ const Endpoints = ({ full }) => {
           handleResetFilter,
           handleRefresh,
           isRefetching,
+          isScroll,
         }}
       />
 

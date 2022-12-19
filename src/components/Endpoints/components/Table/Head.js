@@ -19,9 +19,9 @@ const Head = ({ sortType, handleSort, isLoading }) => {
               overlay={
                 <Tooltip>
                   {Object.entries(TYPES).map(([k, type]) => (
-                    <>
+                    <React.Fragment key={k}>
                       <b>{type}</b>: {TYPES_DESCR[k]} <br />
-                    </>
+                    </React.Fragment>
                   ))}
                 </Tooltip>
               }
