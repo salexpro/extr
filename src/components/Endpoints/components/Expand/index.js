@@ -18,10 +18,13 @@ const More = ({ data }) => {
   return (
     <div className="table__more">
       {list
-        .map(({ name }) =>
-          name
-            .replace('For', '\u00ADFor')
-            .replace('getRecent', 'getRecent\u00AD')
+        .map(
+          ({ name }) =>
+            name
+              .replace('For', '\u00ADFor')
+              .replace('getRecent', 'getRecent\u00AD')
+              .replace('AccountsBy', 'Accounts\u00ADBy')
+          // .replace('AccountBalance', 'Account\u00ADBalance')
         )
 
         .join(', ')}

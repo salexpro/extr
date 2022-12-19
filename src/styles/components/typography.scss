@@ -11,17 +11,6 @@ h1 {
   @include b-d(md) {
     font-size: 36px;
   }
-
-  &::after {
-    display: inline-block;
-    height: 1em;
-    vertical-align: middle;
-    content: '' !important;
-    border-right: 6px solid $primary;
-    @include b-d(xl) {
-      border-width: 4px;
-    }
-  }
 }
 
 h2,

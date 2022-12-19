@@ -2,10 +2,21 @@
 
 .endpoints {
   padding-top: 150px;
+  @include b-d(xl) {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+  @include b-d(md) {
+    padding-top: 20px;
+  }
 }
 
 .lead {
   margin-top: 40px;
+
+  @include b-d(lg) {
+    margin-top: 30px;
+  }
 
   span {
     padding: 0;

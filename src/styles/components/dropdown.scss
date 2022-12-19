@@ -2,6 +2,10 @@
   &-toggle {
     position: relative;
 
+    @include b-d(xl) {
+      font-size: 14px;
+    }
+
     &.btn[aria-expanded='true'] {
       color: $primary;
       background: none;

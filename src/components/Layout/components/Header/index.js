@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, Link } from '@reach/router'
+import { Link } from '@reach/router'
 import { Container, Offcanvas } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
@@ -14,12 +14,8 @@ import Menu from '../Menu'
 
 import * as s from './Header.module.scss'
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, isHome }) => {
   const { scrollY } = useScroll()
-
-  const { pathname } = useLocation()
-
-  const isHome = pathname === '/'
 
   const isScrolled = scrollY > 160 || !isHome
 

@@ -76,7 +76,7 @@
 
   @include b-d(xl) {
     max-width: 100px;
-    pointer-events: none;
+    // pointer-events: none;
     transform: rotate(90deg) translate(60px, -100%);
   }
 

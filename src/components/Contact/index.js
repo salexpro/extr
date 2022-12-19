@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Button } from 'react-bootstrap'
+import cn from 'classnames'
 
 import Window from '../Window'
 import Icon from '../Icon'
@@ -8,9 +9,9 @@ import * as s from './Contact.module.scss'
 
 import SOCIAL from '../Social/constants'
 
-const Contact = () => {
+const Contact = ({ explorer }) => {
   return (
-    <section id="contact" className={s.contact}>
+    <section id="contact" className={cn(s.contact, { [s.explorer]: explorer })}>
       <Container className={s.contact__inner}>
         <Window title="Community" variant="contact">
           <div className={s.window__content}>

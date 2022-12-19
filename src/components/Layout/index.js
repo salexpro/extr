@@ -8,6 +8,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
 import { SSRProvider } from 'react-bootstrap'
 import { QueryClientProvider } from '@tanstack/react-query'
 
@@ -31,14 +32,18 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const { pathname } = useLocation()
+
+  const isHome = pathname === '/'
+
   return (
     <SSRProvider>
       <div className={layout}>
-        <Header siteTitle={data.site.siteMetadata?.title} />
+        <Header siteTitle={data.site.siteMetadata?.title} isHome={isHome} />
         <QueryClientProvider client={queryClient}>
           <main className="main">{children}</main>
         </QueryClientProvider>
-        <Footer siteTitle={data.site.siteMetadata?.title} />
+        <Footer siteTitle={data.site.siteMetadata?.title} isHome={isHome} />
         {/* <SVGDefs /> */}
       </div>
     </SSRProvider>

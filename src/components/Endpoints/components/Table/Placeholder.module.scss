@@ -1,0 +1,101 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+@import '~styles/mixins';
+
+.placeholder {
+  &__endpoint {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin-top: 4px;
+
+    :global(.placeholder) {
+      &:first-child {
+        width: 160px;
+        @include b-d(xxl) {
+          width: 145px;
+        }
+      }
+
+      &:last-child {
+        width: 24px;
+        height: 24px;
+        @include b-d(xxl) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  &__type {
+    width: 100px;
+    @include b-d(xxl) {
+      width: 60px;
+    }
+  }
+
+  &__methods {
+    display: grid;
+    row-gap: 0.7em;
+    margin-top: 7px;
+
+    :global(.placeholder) {
+      &:nth-child(1) {
+        width: 260px;
+        @include b-d(xxl) {
+          width: 190px;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 210px;
+        @include b-d(xxl) {
+          width: 160px;
+        }
+      }
+
+      &:nth-child(3) {
+        width: 160px;
+        @include b-d(xxl) {
+          width: 110px;
+        }
+      }
+
+      &:nth-child(4) {
+        width: 180px;
+        @include b-d(xxl) {
+          width: 130px;
+        }
+      }
+    }
+  }
+
+  &__country {
+    width: 110px;
+    @include b-d(xxl) {
+      width: 60px;
+    }
+  }
+
+  &__provider {
+    width: 140px;
+    @include b-d(xxl) {
+      width: 70px;
+    }
+  }
+
+  &__version {
+    width: 60px;
+    @include b-d(xxl) {
+      width: 50px;
+    }
+  }
+
+  &__response {
+    width: 60px;
+    @include b-d(xxl) {
+      width: 50px;
+    }
+  }
+}

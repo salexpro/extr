@@ -6,16 +6,29 @@
   justify-content: space-between;
   margin-top: 60px;
   margin-bottom: 40px;
+  @include b-d(xl) {
+    margin: 30px 0;
+  }
+  @include b-d(lg) {
+    display: none;
+  }
 }
 
 .filters {
   display: flex;
   column-gap: 20px;
+  @include b-d(xl) {
+    column-gap: 10px;
+  }
 }
 
 .actions {
   display: flex;
-  column-gap: 50px;
+  grid-gap: 20px 50px;
+  @include b-d(xl) {
+    display: grid;
+    justify-items: end;
+  }
 }
 
 .actionButton {

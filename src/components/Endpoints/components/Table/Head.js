@@ -26,7 +26,7 @@ const Head = ({ sortType, handleSort, isLoading }) => {
                 </Tooltip>
               }
             >
-              <Icon name="icon-info" size={22} />
+              <Icon className="table__tooltip" name="icon-info" size={22} />
             </OverlayTrigger>
           </span>
         )

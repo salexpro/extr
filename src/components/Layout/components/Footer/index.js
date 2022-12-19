@@ -10,9 +10,9 @@ import logo from '~img/logo.svg'
 
 import * as s from './Footer.module.scss'
 
-const Footer = ({ siteTitle }) => {
+const Footer = ({ siteTitle, isHome }) => {
   return (
-    <footer className={s.footer}>
+    <footer className={cn(s.footer, { [s.explorer]: !isHome })}>
       <Container className={s.footer__inner}>
         <div className={s.footer__logo}>
           <img src={logo} width={89} alt={siteTitle} />

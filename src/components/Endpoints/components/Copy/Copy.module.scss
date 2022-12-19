@@ -1,6 +1,7 @@
 @import '~styles/mixins';
 
 .copyButton {
+  color: $black;
   transition: color 250ms;
 
   &:hover {

@@ -13,6 +13,13 @@
     padding: 100px 0 80px;
   }
 
+  &.explorer {
+    margin-bottom: 0;
+    @include b-up(xl) {
+      margin-top: 150px;
+    }
+  }
+
   &__inner {
     position: relative;
 
