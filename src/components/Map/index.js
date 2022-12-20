@@ -74,10 +74,6 @@ const Map = () => {
       })
     }, {})
 
-  // console.log(data)
-  // console.log(nodes)
-  // console.log(stats)
-
   const getNodeSize = (val) => {
     switch (true) {
       case val >= 500:
@@ -92,10 +88,7 @@ const Map = () => {
   return (
     <Container id="map" as="section" className={s.map}>
       <h2>Map of Solana nodes and public RPC endpoints</h2>
-      <Window
-        title="Map of Solana nodes and public RPC endpoints"
-        variant="map"
-      >
+      <Window title="Map of Solana public node endpoints" variant="map">
         <div className={s.map__topbar}>
           {/* <div
             className={cn('btn', s.switcher, {

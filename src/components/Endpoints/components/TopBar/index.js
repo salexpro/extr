@@ -25,70 +25,73 @@ const TopBar = ({
   return (
     <div className={cn(s.topbar, { [s.scroll]: isScroll })}>
       <div className={s.filters}>
-        {Object.entries(filters).map(([key, { label, data: fData }]) => {
-          const filterValues = fData && Object.values(fData)
+        {Object.entries(filters).map(
+          ([key, { label, data: fData, className }]) => {
+            const filterValues = fData && Object.values(fData)
 
-          const isPrimary = filterValues.some((v) => v)
+            const isPrimary = filterValues.some((v) => v)
 
-          return (
-            <Dropdown
-              key={key}
-              autoClose="outside"
-              // align={
-              // i === Object.keys(FILTERS).length - 1 ? 'end' : 'start'
-              // }
-            >
-              <Dropdown.Toggle
-                variant={cn({
-                  'outline-primary': isPrimary,
-                  'outline-light': !isPrimary,
-                })}
-                size="sm"
-                disabled={isLoading}
+            return (
+              <Dropdown
+                key={key}
+                autoClose="outside"
+                // align={
+                // i === Object.keys(FILTERS).length - 1 ? 'end' : 'start'
+                // }
               >
-                {label}
-              </Dropdown.Toggle>
-              {fData && (
-                <Dropdown.Menu
-                  variant="dark"
-                  popperConfig={{
-                    modifiers: [
-                      { name: 'offset', options: { offset: [0, 10] } },
-                    ],
-                  }}
-                  flip={false}
+                <Dropdown.Toggle
+                  variant={cn({
+                    'outline-primary': isPrimary,
+                    'outline-light': !isPrimary,
+                  })}
+                  size="sm"
+                  disabled={isLoading}
+                  className={className}
                 >
-                  <div
-                    className={cn('dropdown-items', {
-                      'dropdown-items--horizontal': filterValues.length > 10, // overflow of max height
-                      [`dropdown-items--${label.toLowerCase()}`]: label,
-                    })}
+                  {label}
+                </Dropdown.Toggle>
+                {fData && (
+                  <Dropdown.Menu
+                    variant="dark"
+                    popperConfig={{
+                      modifiers: [
+                        { name: 'offset', options: { offset: [0, 10] } },
+                      ],
+                    }}
+                    flip={false}
                   >
-                    <Form.Check
-                      type="checkbox"
-                      id={`filter-${label}-all`}
-                      label="All"
-                      checked={filterValues.every((v) => !v)}
-                      onChange={() => handleResetFilter(key)}
-                    />
-                    {Object.entries(fData)
-                      .sort()
-                      .map(([name, val]) => (
-                        <Form.Check
-                          key={name}
-                          type="checkbox"
-                          id={`filter-${label}-${name}`}
-                          label={name}
-                          checked={val}
-                          onChange={() => handleFilter(key, name)}
-                        />
-                      ))}
-                  </div>
-                </Dropdown.Menu>
-              )}
-            </Dropdown>
-          )
-        })}
+                    <div
+                      className={cn('dropdown-items', {
+                        'dropdown-items--horizontal': filterValues.length > 10, // overflow of max height
+                        [`dropdown-items--${label.toLowerCase()}`]: label,
+                      })}
+                    >
+                      <Form.Check
+                        type="checkbox"
+                        id={`filter-${label}-all`}
+                        label="All"
+                        checked={filterValues.every((v) => !v)}
+                        onChange={() => handleResetFilter(key)}
+                      />
+                      {Object.entries(fData)
+                        .sort()
+                        .map(([name, val]) => (
+                          <Form.Check
+                            key={name}
+                            type="checkbox"
+                            id={`filter-${label}-${name}`}
+                            label={name}
+                            checked={val}
+                            onChange={() => handleFilter(key, name)}
+                          />
+                        ))}
+                    </div>
+                  </Dropdown.Menu>
+                )}
+              </Dropdown>
+            )
+          }
+        )}
       </div>
 
       <div className={s.actions}>
@@ -103,7 +106,11 @@ const TopBar = ({
         <button
           type="button"
           onClick={handleRefresh}
-          className={cn(s.actionButton, { [s.fetching]: isRefetching })}
+          className={cn(
+            s.actionButton,
+            { [s.fetching]: isRefetching },
+            'solana-explorer-refresh-results'
+          )}
           disabled={isLoading || isRefetching}
         >
           <Icon name="icon-reload" size={26} />
@@ -113,7 +120,7 @@ const TopBar = ({
         </button>
         <button
           type="button"
-          className={s.actionButton}
+          className={cn(s.actionButton, 'solana-explorer-clear-filters')}
           onClick={() => handleResetFilter()}
           disabled={!isAnyFilterActive(filters)}
         >

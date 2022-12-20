@@ -12,6 +12,7 @@ const ROADMAP = [
     content: 'Public load balancer on Solana',
   },
   {
+    status: 'Completed',
     content: 'Solana RPC explorer and map',
   },
 

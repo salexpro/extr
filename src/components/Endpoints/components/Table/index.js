@@ -15,10 +15,11 @@ const Table = ({
   filteredData,
   handleResetFilter,
   itemsLimit,
+  filters,
 }) => {
   return (
     <BootstrapTable className="table--endpoints" responsive>
-      <Head {...{ sortType, handleSort, isLoading }} />
+      <Head {...{ sortType, handleSort, isLoading, filters }} />
       <tbody>
         {filteredData &&
           (!filteredData.length ? (

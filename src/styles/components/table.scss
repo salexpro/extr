@@ -249,6 +249,14 @@
       opacity: 0.5;
     }
 
+    &-label {
+      svg {
+        display: inline-block;
+        margin-left: 5px;
+        vertical-align: bottom;
+      }
+    }
+
     span {
       display: grid;
       row-gap: 2px;
@@ -258,16 +266,16 @@
       height: 24px;
       margin-top: 1px;
       color: $primary;
-    }
 
-    svg {
-      &:first-child {
-        transform: scaleY(-1);
+      svg {
+        &:first-child {
+          transform: scaleY(-1);
+        }
       }
     }
 
     &.sortAsc {
-      svg {
+      span svg {
         &:first-child {
           color: $white;
         }
@@ -275,7 +283,7 @@
     }
 
     &.sortDesc {
-      svg {
+      span svg {
         &:last-child {
           color: $white;
         }

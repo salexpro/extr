@@ -5,9 +5,11 @@ import cn from 'classnames'
 
 import Icon from '~components/Icon'
 
+import { isFilterActive } from '../../utils'
+
 import { TABLE, TYPES, TYPES_DESCR } from '../../constants'
 
-const Head = ({ sortType, handleSort, isLoading }) => {
+const Head = ({ sortType, handleSort, isLoading, filters }) => {
   const renderItem = (key, label) => {
     switch (key) {
       case 'type':
@@ -26,7 +28,11 @@ const Head = ({ sortType, handleSort, isLoading }) => {
                 </Tooltip>
               }
             >
-              <Icon className="table__tooltip" name="icon-info" size={22} />
+              <Icon
+                className="table__tooltip solana-explorer-type-info"
+                name="icon-info"
+                size={22}
+              />
             </OverlayTrigger>
           </span>
         )
@@ -35,14 +41,41 @@ const Head = ({ sortType, handleSort, isLoading }) => {
         return (
           <button
             type="button"
-            className={cn('table__sortButton', {
-              sortAsc: sortType,
-              sortDesc: !sortType,
-            })}
+            className={cn(
+              'table__sortButton',
+              {
+                sortAsc: sortType,
+                sortDesc: !sortType,
+              },
+              'solana-explorer-response-time'
+            )}
             onClick={handleSort}
             disabled={isLoading}
           >
-            {label}
+            <div className="table__sortButton-label">
+              {label}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={
+                  <Tooltip>
+                    {isFilterActive(filters.methods) ? (
+                      <>
+                        Average response time for all <b>selected</b>
+                        <br /> methods
+                      </>
+                    ) : (
+                      <>
+                        Response time for the <b>getAccountInfo</b>
+                        <br /> method
+                      </>
+                    )}{' '}
+                    (European server)
+                  </Tooltip>
+                }
+              >
+                <Icon className="table__tooltip" name="icon-info" size={22} />
+              </OverlayTrigger>
+            </div>
             <span>
               {[...Array(2)].map((_, j) => (
                 <Icon

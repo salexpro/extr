@@ -30,10 +30,14 @@ const Copy = ({ data, variant, ...rest }) => {
     {
       type: !copied ? 'button' : null,
       onClick: !copied ? () => handleCopy(data) : null,
-      className: cn(s.copybutton, {
-        [s[variant]]: variant,
-        [s.copied]: copied,
-      }),
+      className: cn(
+        s.copybutton,
+        {
+          [s[variant]]: variant,
+          [s.copied]: copied,
+        },
+        'solana-public-lb-endpoint-copied'
+      ),
       ...rest,
     },
     <>

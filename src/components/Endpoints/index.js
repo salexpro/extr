@@ -190,8 +190,6 @@ const Endpoints = ({ full }) => {
             ? item.supported_methods.filter(({ name }) => methods.data[name])
             : item.supported_methods
 
-          console.log(filters.supported_methods)
-
           return {
             ...item,
             response: avgTime(filteredMethods),
@@ -261,6 +259,7 @@ const Endpoints = ({ full }) => {
           filteredData,
           handleResetFilter,
           itemsLimit,
+          filters,
         }}
       />
 

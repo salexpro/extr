@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import cn from 'classnames'
 import Icon from '../../../Icon'
 
 import { copyButton } from './Copy.module.scss'
@@ -33,7 +34,7 @@ const Copy = ({ children, as, ...rest }) => {
           as || 'button',
           {
             type: 'button',
-            className: copyButton,
+            className: cn(copyButton, 'solana-explorer-endpoint-copied'),
             onClick: () => handleCopy(children.toString()),
           },
           <Icon name="icon-copy" />

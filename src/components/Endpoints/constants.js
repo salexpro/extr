@@ -35,6 +35,7 @@ const FILTERS = Object.entries(TABLE).reduce((prev, [key, label]) => {
                   {}
                 )
               : {},
+          className: `solana-explorer-${key}`,
         },
       }
     : prev
