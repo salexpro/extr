@@ -39,7 +39,7 @@
     "react-bootstrap": "2.7.0",
     "react-dom": "18.2.0",
     "react-type-animation": "^2.1.2",
-    "sass": "1.56.2",
+    "sass": "1.57.0",
     "svg-parser": "2.0.4",
     "swiper": "^8.4.4"
   },
