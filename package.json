@@ -32,7 +32,7 @@
     "gatsby-source-filesystem": "5.3.1",
     "gatsby-transformer-json": "^5.0.0",
     "gatsby-transformer-sharp": "5.3.1",
-    "gsap": "3.11.3",
+    "gsap": "3.11.4",
     "immer": "^9.0.16",
     "prop-types": "15.8.1",
     "react": "18.2.0",
