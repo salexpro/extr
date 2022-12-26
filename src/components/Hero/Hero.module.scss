@@ -240,7 +240,7 @@
 
 .partners {
   display: grid;
-  row-gap: 30px;
+  row-gap: 20px;
 
   @include b-d(lg) {
     row-gap: 20px;
@@ -279,7 +279,7 @@
   &__list {
     display: grid;
     grid-auto-flow: column;
-    column-gap: 26px;
+    column-gap: 20px;
     min-width: 728px;
     padding: 0;
     margin: 0;
@@ -291,6 +291,10 @@
 
     @include b-d(lg) {
       column-gap: 0;
+    }
+
+    @include b-d(md) {
+      min-width: 830px;
     }
 
     img {

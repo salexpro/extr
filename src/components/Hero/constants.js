@@ -5,6 +5,7 @@ import chainflow from './img/partners/chainflow.svg'
 import facilities from './img/partners/staking_facilities.svg'
 import imperator from './img/partners/imperator.svg'
 import triton from './img/partners/triton.svg'
+import chainstack from './img/partners/chainstack.svg'
 
 const PARTNERS = [
   {
@@ -34,6 +35,10 @@ const PARTNERS = [
   {
     name: 'Triron',
     img: triton,
+  },
+  {
+    name: 'Chainstack',
+    img: chainstack,
   },
 ]
 
