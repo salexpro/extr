@@ -1,5 +1,3 @@
-const rnd = () => Math.random().toString(36).substring(2, 3)
-
 const productionBranchNames = ['master', 'main']
 
 module.exports = {
@@ -37,8 +35,6 @@ module.exports = {
           productionBranchNames.includes(process.env.BRANCH) ||
           // Vercel
           process.env.GATSBY_VERCEL_ENV === 'production',
-        prefix: rnd(),
-        suffix: rnd(),
       },
     },
     `gatsby-plugin-image`,

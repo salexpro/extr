@@ -6,8 +6,8 @@ export const api = axios.create({
 })
 
 export const API_KEYS = {
-  ENDPOINTS: '/api/v1/endpoints',
-  STATS: '/api/v1/stats',
+  ENDPOINTS: '/endpoints',
+  STATS: '/stats',
 }
 
 const defaultQueryFn = ({ queryKey }) => {
