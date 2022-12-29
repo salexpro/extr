@@ -205,9 +205,15 @@ const Endpoints = ({ full }) => {
       }
 
       setFilteredData(
-        dataWithResponse.sort(({ response: a }, { response: b }) =>
-          sortType ? a - b : b - a
-        )
+        dataWithResponse.sort(({ response: a }, { response: b }) => {
+          if (typeof a === 'undefined') {
+            return 1
+          }
+          if (typeof b === 'undefined') {
+            return -1
+          }
+          return sortType ? a - b : b - a
+        })
       )
     }
   }, [filters, data, sortType])
