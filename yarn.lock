@@ -1723,14 +1723,16 @@
   dependencies:
     tslib "^2.4.0"
 
-"@gvrs/gatsby-transformer-blurhash@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@gvrs/gatsby-transformer-blurhash/-/gatsby-transformer-blurhash-1.0.4.tgz#8e723241fef7efc695fea27fbbf0059e83eec943"
-  integrity sha512-UVUvlpD69/d79RdPOe8l1lPRKJBJHlNj4XC1pYpHsxlSUJawxsbUr4EWEfXgXmiohZEuZ9OiB0pf9qlCDK9iPg==
+"@gvrs/gatsby-transformer-blurhash@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@gvrs/gatsby-transformer-blurhash/-/gatsby-transformer-blurhash-2.0.0.tgz#46de818ef2b50861b79049f9b701befb07c2ddbd"
+  integrity sha512-pEWgrUSNA2/gLsc0d4GkdSZyy9U0KtGyI4zCMiutuyUHgOQ+ZecZ4PAzNRcFmWELghlSKbU4TPlDfcqPgj9BGA==
   dependencies:
     blurhash "^1.1.5"
     debug "^4.3.3"
+    gatsby-core-utils "^4.2.0"
     p-queue "^6.6.2"
+    sharp "^0.31.2"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -6474,7 +6476,7 @@ gatsby-cli@^5.4.0:
     yoga-layout-prebuilt "^1.10.0"
     yurnalist "^2.1.0"
 
-gatsby-core-utils@^4.4.0:
+gatsby-core-utils@^4.2.0, gatsby-core-utils@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-4.4.0.tgz#458673d22be3eb511ab8e12be4ea233a74591531"
   integrity sha512-/ibilcGENKH6qqkcT17SIZgc2kjZn3HiGpD+ixbXYkMGqHiM5pj9XIHjy3DfvZvDt2ujkYV5EinmUdqx7CI81w==
@@ -10683,7 +10685,7 @@ shallow-compare@^1.2.2:
   resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
   integrity sha512-LUMFi+RppPlrHzbqmFnINTrazo0lPNwhcgzuAXVVcfy/mqPDrQmHAyz5bvV0gDAuRFrk804V0HpQ6u9sZ0tBeg==
 
-sharp@^0.31.3:
+sharp@^0.31.2, sharp@^0.31.3:
   version "0.31.3"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.3.tgz#60227edc5c2be90e7378a210466c99aefcf32688"
   integrity sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==
