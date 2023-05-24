@@ -1564,10 +1564,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.41.0.tgz#080321c3b68253522f7646b55b577dd99d2950b3"
   integrity sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==
 
-"@fontsource/tomorrow@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/tomorrow/-/tomorrow-4.5.10.tgz#cfe28423a5360538f5701a217aa6e818affe5d7a"
-  integrity sha512-ECFrZw79QmkJaIZAsRTpnsIv94KYgx5ucoW6dis65Cr3uVAMewu1R06PH+cKm0Odv4yzeT9tIcVn97D15V/5qw==
+"@fontsource/tomorrow@^5.0.0":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/tomorrow/-/tomorrow-5.0.1.tgz#b2ab8bb0ec03fd9f93d4f5d37b3d8166490f797d"
+  integrity sha512-GSKrkHk/zKZenjrhrDj7hoBUNEiyatw1crB9fe83zfOWmDc280VgacB8qZR9z9whSDOdqzhqEByJ/uo0Ll6nuA==
 
 "@gatsbyjs/parcel-namer-relative-to-cwd@^2.10.0":
   version "2.10.0"
