@@ -24,7 +24,7 @@
     "gatsby-plugin-google-gtag": "5.11.0",
     "gatsby-plugin-google-tagmanager": "5.11.0",
     "gatsby-plugin-image": "3.11.0",
-    "gatsby-plugin-minify-classnames": "4.1.3",
+    "gatsby-plugin-minify-classnames": "5.0.0",
     "gatsby-plugin-offline": "6.11.0",
     "gatsby-plugin-sass": "6.11.0",
     "gatsby-plugin-sharp": "5.11.0",
