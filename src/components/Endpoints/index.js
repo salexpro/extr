@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import { Container, Placeholder } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
-import produce from 'immer'
+import { produce } from 'immer'
 
 import { API_KEYS } from '~api'
 

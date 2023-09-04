@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
-import produce from 'immer'
+import { produce } from 'immer'
 
 import { API_KEYS } from '~api'
 

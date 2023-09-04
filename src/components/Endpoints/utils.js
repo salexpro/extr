@@ -1,4 +1,4 @@
-import produce from 'immer'
+import { produce } from 'immer'
 
 // eslint-disable-next-line import/prefer-default-export
 
