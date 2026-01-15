@@ -29,7 +29,7 @@
     "gatsby-source-filesystem": "5.15.0",
     "gatsby-transformer-json": "^5.0.0",
     "gatsby-transformer-sharp": "5.15.0",
-    "gsap": "3.13.0",
+    "gsap": "3.14.2",
     "immer": "^10.0.2",
     "prop-types": "15.8.1",
     "react": "18.3.1",
